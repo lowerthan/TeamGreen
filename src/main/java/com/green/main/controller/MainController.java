@@ -30,7 +30,7 @@ public class MainController {
 		UserVo a = userService.getUserInfo(user_id);			//userVo의 내용 defalut값을 위해 가져옴 
 		// System.out.println( a );
 		mv.addObject("a", a);
-		mv.setViewName("/user/createmoim");						//WEB-INF/views/user/createmoim.jsp  경로수정필요해보임!!
+		mv.setViewName("/main/createmoim");						//WEB-INF/views/user/createmoim.jsp  경로수정필요해보임!!
 		
 		return mv;
 	}

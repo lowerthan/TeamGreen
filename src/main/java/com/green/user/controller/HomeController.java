@@ -95,6 +95,9 @@ public class HomeController {
 
 	// 회원가입 中 아이디 중복체크
 	
+	
+	
+	
 	// 마이페이지 home.jsp의 상단 메뉴바의 mypage_icon 클릭
 	@GetMapping("/Mypage")
 	public String mypage( String user_id, Model model ) {

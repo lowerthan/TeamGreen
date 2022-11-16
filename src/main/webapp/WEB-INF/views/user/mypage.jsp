@@ -21,27 +21,6 @@
         <link href="css/home.css" rel="stylesheet" />
         <link href="css/signUpForm.css" rel="stylesheet" />
         
-<!-- 내부 스타일 시트 -->
-<style>
-.btn {
-  position:relative;
-  left:25%;
-  transform: translateX(-50%);
-  margin-bottom: 40px;
-  width:30%;
-  height:40px;
-  background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
-  background-position: left;
-  background-size: 200%;
-  color:white;
-  font-weight: bold;
-  border:none;
-  cursor:pointer;
-  transition: 0.4s;
-  display:inline;
-}
-</style>
-        
         <!-- 현태 행님이 만든 js, 모임 누르면 해당 모임 화면으로 ?! -->
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"> </script>
 		<script>
@@ -143,7 +122,7 @@
 		
 		
 		<!-- 임시 테스트 중 -->
-	<div class="container px-4 px-lg-5 my-5">
+	<div class="container px-4 px-lg-5 ">
 	<form id="myinfo" action="/Update" method="POST" class="joinForm" >
 		<h2>사용자 정보</h2>
 		<div class="textForm">
@@ -213,7 +192,7 @@
 		</div>
 		
 		<div class="textForm">
-	     	<legend>가입한 동아리 (소모임) 리스트</legend>
+	     	<legend>가입 동아리 (소모임) 목록</legend>
 	        <div id="main">
 	   			<c:forEach var="moims" items="${ usermoimslist }">
 	   			<div class="item">

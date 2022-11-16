@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모임 개설 화면</title>
 	<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 	<link rel="stylesheet" href="/css/common.css"/>
 <style> 
@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"> </script>
 <script>
 $(function() {
-	$('[name=moim_name]').on('focusout', function() {
+	$('[name=moim_name]').on('keyup', function() {
 		let moim_name = $('[name=moim_name]').val(); // 모임이름 들고오기
 		
 		$.ajax({
@@ -106,20 +106,20 @@ $(function() {
 <body>
 
 <div id="main">
-	<form action="/Inputmoim" method="GET" id="inputmoim">
-   <h2>모임개설테스트</h2>
+	<form action="/Main/Inputmoim" method="POST" id="inputmoim">
+   <h2>모임개설 테스트</h2>
     <table>
      <ul>
-     	<input type="hidden" name="univname" value="${b.univname }" />
+     	<input type="hidden" name="univname" value="${a.univname }" />
      	<input type="hidden" name="user_id" value="${a.user_id }" />
-     	<li>학교이름: ${b.univ_name }</li><br>
+     	<li>학교이름: ${a.univname }</li><br>
      	<li>유저이름: ${a.user_name }</li><br>
      	<li>모임이름: <input type="text" name="moim_name" /></li>
      		
      	<li><span id="moim_name_check"></span></li><br>
      	<li>관심사 선택: <select name="moim_cate"><br>
      		<option value="">모임 관심사 선택</option>
-     		<option value="스포츠/운동">스포츠/ 운동</option>
+     		<option value="스포츠/운동">스포츠 / 운동</option>
      		<option value="문화/공연">문화 / 공연</option>
      		<option value="게임/오락">게임 / 오락</option>
      		<option value="사교/인맥">사교 / 인맥</option>
