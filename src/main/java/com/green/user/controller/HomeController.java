@@ -38,7 +38,7 @@ public class HomeController {
 	public  String  home(Model model) {
 		List<MoimVo> moimList = moimService.getMoimList();  // home화면의 모임리스트 
 		model.addAttribute("moimList", moimList);			// 홈화면의 c:forEach문의 아이템 moimList
-		// System.out.println(moimList);
+		System.out.println(moimList);
 		return "home";										//WEB-INF/views/user/home.jsp
 	}
 	
@@ -147,6 +147,11 @@ public class HomeController {
 		
 		return "redirect:/Moim/moimpage?moim_idx=" + map.get("moim_idx");
 	}
+	
+
+		
+		
+	
 	
 }
 

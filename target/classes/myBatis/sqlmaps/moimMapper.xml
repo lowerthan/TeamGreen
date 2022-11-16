@@ -17,13 +17,17 @@
   
 	<select id="MoimList"
 	      resultType="com.green.moim.vo.MoimVo">
-	      SELECT MOIM_IDX,
-	      		 MOIM_NAME,
-				 UNIVNAME,
-	      		 MOIM_CATE,
-				 USER_ID,
-				 MOIM_INTRO
-		  FROM	 MOIM
+	      SELECT MOIM.MOIM_IDX,
+	      		 MOIM.MOIM_NAME,
+				 MOIM.UNIVNAME,
+	      		 MOIM.MOIM_CATE,
+				 MOIM.USER_ID,
+				 MOIM.MOIM_INTRO,
+                 MUSER.USER_NAME,
+                 MUSER.USER_CATE
+		  FROM	MOIM,MUSER
+          WHERE MOIM.UNIVNAME=MUSER.UNIVNAME
+          AND   INSTR(MUSER.USER_CATE,MOIM.moim_cate)>0
 		  ORDER BY MOIM_IDX ASC
 	
 	</select>

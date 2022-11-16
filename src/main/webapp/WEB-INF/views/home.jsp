@@ -84,7 +84,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h2 class="display-4 fw-bolder">GreenCom Team 4 <br>Dw + Ss + Ht + Js + Iy</h2>
-                    <p class="lead fw-normal text-white-50 mb-0">순식이 동아리를 만들어가세요</p>
+                    <p class="lead fw-normal text-white-50 mb-0">당신만의 동아리를 만들어가세요</p>
                 </div>
             </div>
         </header>
@@ -105,7 +105,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=요리/맛집">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=요리/맛집">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=사교/인맥">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=사교/인맥">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=여행/캠핑">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=여행/캠핑">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=스포츠/운동">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=스포츠/운동">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=문화/공연">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=문화/공연">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=게임/오락">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=게임/오락">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=댄스/음악">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=댄스/음악">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -224,12 +224,13 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/Search?searchword=반려동물">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=반려동물">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
 				<hr>
+
 				${ sessionScope.login.user_id } 님 환영합니다.<br>
 				당신의 이름은 ${ login.user_name } 입니다.<br>
 				<a href="/logout">로그아웃</a>
@@ -237,9 +238,6 @@
 				<c:forEach var="moim" items="${ moimList }" >
 					<div class="moimList">
 				    <ul>
-				      <!--  
-				      <input type="hidden"name="moim_idx" value="${ moim.moim_idx   }">
-				      -->
 				      <div style="display: none">
 				      <li>${ moim.moim_idx   }</li>
 				      </div>
