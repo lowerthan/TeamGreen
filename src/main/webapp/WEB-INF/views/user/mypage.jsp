@@ -112,7 +112,7 @@
          </ul>
       </fieldset>
       <div id="buttons">
-         <input type="submit" value="수정하기"  onclick="return chk()" >
+         <input type="submit" value="수정하기" onclick="return chk()" >
          <input type="reset" value="취소">
        </div>
    </form>
