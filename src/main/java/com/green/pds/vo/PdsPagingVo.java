@@ -2,13 +2,12 @@ package com.green.pds.vo;
 
 public class PdsPagingVo {
 
-	private int idx;
-	//private String menu_id;
-	private String title;
-	private String cont;
-	private String regdate;
+	private int board_idx;
+	private String board_title;
+	private String board_cont;
+	private String board_regdate;
 	private int readcount;
-	private String writer;
+	private String user_id;
 	
 	private int filescount;
 
@@ -24,9 +23,7 @@ public class PdsPagingVo {
 	public void setFilescount(int filescount) {
 		this.filescount = filescount;
 	}
-	private String menu_id;
-	private String menu_name;
-	private String menu_seq;
+	private int menu_idx;
 	
 	private String file_num;
 	private String filename;
@@ -49,35 +46,35 @@ public class PdsPagingVo {
 	private boolean isshowpagenext;
 
 	// Getter /setter 
-	public int getIdx() {
-		return idx;
+	public int getboard_idx() {
+		return board_idx;
 	}
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setboard_idx(int board_idx) {
+		this.board_idx = board_idx;
 	}
-	public String getTitle() {
-		return title;
+	public String getboard_title() {
+		return board_title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setboard_title(String board_title) {
+		this.board_title = board_title;
 	}
-	public String getCont() {
-		return cont;
+	public String getboard_cont() {
+		return board_cont;
 	}
-	public void setCont(String cont) {
-		this.cont = cont;
+	public void setboard_cont(String board_cont) {
+		this.board_cont = board_cont;
 	}
-	public String getRegdate() {
-		return regdate;
+	public String getboard_regdate() {
+		return board_regdate;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setboard_regdate(String board_regdate) {
+		this.board_regdate = board_regdate;
 	}
-	public String getWriter() {
-		return writer;
+	public String getuser_id() {
+		return user_id;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setuser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public int getReadcount() {
 		return readcount;
@@ -115,24 +112,13 @@ public class PdsPagingVo {
 	public void setDelnum(int delnum) {
 		this.delnum = delnum;
 	}
-	public String getMenu_id() {
-		return menu_id;
+	public int getMenu_idx() {
+		return menu_idx;
 	}
-	public void setMenu_id(String menu_id) {
-		this.menu_id = menu_id;
+	public void setMenu_idx(int menu_idx) {
+		this.menu_idx = menu_idx;
 	}
-	public String getMenu_name() {
-		return menu_name;
-	}
-	public void setMenu_name(String menu_name) {
-		this.menu_name = menu_name;
-	}
-	public String getMenu_seq() {
-		return menu_seq;
-	}
-	public void setMenu_seq(String menu_seq) {
-		this.menu_seq = menu_seq;
-	}
+	
 	public String getFile_num() {
 		return file_num;
 	}

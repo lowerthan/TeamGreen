@@ -92,7 +92,7 @@ public class PdsServiceImpl implements PdsService {
 			
 			PdsPagingVo        vo  = bp.getPdsPagingInfo();
 			
-			vo.setMenu_id( (String) map.get("menu_id") );
+			vo.setMenu_idx( (int) map.get("menu_idx") );
 			
 			map.put("pagePdsVo", vo);
 			
@@ -115,26 +115,42 @@ public class PdsServiceImpl implements PdsService {
 		
 	}
 
-	@Override
-	public void setDelete(HashMap<String, Object> map) {
-	
-		// 1. db 정보삭제
-		pdsDao.setDelete( map );
-		
-		//System.out.println("Pds Service Impl map:" + map);
-		// 삭제후 map 안에 돌아온 정보를 이용해서 실제 파일 삭제 
-		// 2. c:\\upload 폴더 파일삭제
-		List<FilesVo> filesList = (List<FilesVo>) map.get("filesList");
-		for (FilesVo filesVo : filesList) {
-			String  delFile =  filesVo.getSfilename();
-			System.out.println( delFile );
-			File  file  =  new File("c:\\upload\\" + delFile);
-			if( file.exists() ) 
-				file.delete();
-		}
-		
-	}
+	   @Override
+	   public void boardDelete(HashMap<String, Object> map) {
+	      
+	      // 파일 정상 삭제시 카운트 증가
+	      int success_cnt = 0;
+	      
+	      /*
+	      // map:{board_idx=21} 해당 보드 인덱스의 파일 이름 가져오기
+	      List<FilesVo>  filesList  =  pdsDao.getFilesList( map );
 
+	      // 파일명 가지고 오고, 삭제까지 진행되는 반복문 
+	      for (FilesVo filesVo : filesList) {
+	         
+	         String  delFile =  filesVo.getSfilename();
+	         File  file  =  new File("c:\\upload\\" + delFile);
+	         
+	         if( file.exists() ) {
+	            if(file.delete() == true) { // 파일 삭제가 정상이면
+	               success_cnt += 1; // 성공여부 카운트 1 증가
+	            }
+	         }
+	         
+	      }
+	      
+	      // 파일삭제 정상일 때 디비 데이터 삭제 진행
+	      if (success_cnt > 0) {
+	         pdsDao.deleteFileData(map);
+	         pdsDao.deleteBoardData(map);
+	      }
+
+	      */
+	      
+	      //pdsDao.deleteFileData(map);
+	      pdsDao.deleteBoardData(map);
+	   }
+	
 	@Override
 	public void setUpdate(HashMap<String, Object> map,
 			HttpServletRequest request) {
@@ -179,7 +195,7 @@ public class PdsServiceImpl implements PdsService {
 		System.out.println("ImageUpload pdsVo:"+pdsVo);
 		if(result > 0){
 			FilesVo filesVo = new FilesVo();
-			filesVo.setIdx(boardIdx);
+			filesVo.setboard_idx(boardIdx);
 			filesVo.setFilename(pdsVo.getFile().getOriginalFilename());
 			filesVo.setFileext(pdsVo.getFile().getContentType());
 			filesVo.setSfilename(imageFileName);
