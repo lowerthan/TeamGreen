@@ -30,18 +30,11 @@
 	   } );
    });
    
-   $(function() {
-	   $('#prev').on('click', function() {
-		   let tag  = '이전으로 돌아갑니다';
-		   alert(tag);
-	   } );
-   });
+  
 </script>
 </head>
 <body>
   <div id="main">
-    <!-- 메뉴 목록 -->
-    <%@include file="/WEB-INF/include/pdsmenus.jsp" %>
     
     <!-- 새글 쓰기 자료실 -->
     <!--  파일전송시 필수 enctype = "multipart/form-data" -->
@@ -71,14 +64,16 @@
         <td>내용</td>
         <td><textarea name="board_cont" id="board_cont"></textarea></td>
       </tr>
-     <tr>
+      
+<%--      <tr>
         <td>파일 첨부</td>
         <td id="tdfile">
            <input type="button" id="btnAddFile" value="파일 추가"/><br>
            <input type="file" name="upfile" class="upfile" /><br>
         </td>
       </tr>
-    
+--%>    
+
     </table>
       <tr>
         <td  colspan="2">
@@ -88,9 +83,7 @@
       </tr>
       <tr>
     	<td  colspan="2">
-      	  <input type="button" id="prev" value="이전" />
-      	  <a href="javascript:history.back()">이전으로</a>
-      	  <button type="button" onclick="location.href='javascript:history.back()';">이전으로</button>
+      	  <input type="button" id="prev" value="이전" onclick="location.href='javascript:history.back()';"/>
         </td>
       </tr>
             </form>

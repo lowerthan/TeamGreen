@@ -3,7 +3,7 @@ package com.green.pds.vo;
 public class FilesVo {
 	// Fields
 	private int      file_num;
-	private int      idx;
+	private int      board_idx;
 	private String   filename;
 	private String   fileext;
 	private String   sfilename;
@@ -11,10 +11,10 @@ public class FilesVo {
 	// Constructor
 	public FilesVo() {}
 		
-	public FilesVo(int file_num, int idx, 
+	public FilesVo(int file_num, int board_idx, 
 			String filename, String fileext, String sfilename) {
 		this.file_num = file_num;
-		this.idx = idx;
+		this.board_idx = board_idx;
 		this.filename = filename;
 		this.fileext = fileext;
 		this.sfilename = sfilename;
@@ -30,12 +30,12 @@ public class FilesVo {
 		this.file_num = file_num;
 	}
 
-	public int getIdx() {
-		return idx;
+	public int getboard_idx() {
+		return board_idx;
 	}
 
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setboard_idx(int board_idx) {
+		this.board_idx = board_idx;
 	}
 
 	public String getFilename() {
@@ -65,7 +65,7 @@ public class FilesVo {
 	// toString
 	@Override
 	public String toString() {
-		return "FilesVo [file_num=" + file_num + ", idx=" + idx + ", filename=" + filename + ", fileext=" + fileext
+		return "FilesVo [file_num=" + file_num + ", board_idx=" + board_idx + ", filename=" + filename + ", fileext=" + fileext
 				+ ", sfilename=" + sfilename + "]";
 	}
 	

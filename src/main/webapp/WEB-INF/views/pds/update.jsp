@@ -73,44 +73,42 @@
 </head>
 <body>
   <div id="main">
-    <!-- 메뉴 목록 -->
-    <%@include file="/WEB-INF/include/pdsmenus.jsp" %>
-  
     <form  action="/Pds/Update" method="POST"
            enctype="multipart/form-data" >
-    <input  type="hidden"  name="idx"     value="${ map.idx }" />
-    <input  type="hidden"  name="menu_id" value="${ map.menu_id }" />
-    <input type="hidden" name="nowpage"      value="${ map.nowpage }" />          
+    <input  type="hidden"  name="board_idx" value="${ map.board_idx }" />
+ <%--   <input  type="hidden"  name="menu_idx" value="${ map.menu_idx }" />
+     <input type="hidden" name="nowpage"      value="${ map.nowpage }" />          
     <input type="hidden" name="pagecount"    value="${ map.pagecount }" />          
-    <input type="hidden" name="pagegrpnum"   value="${ map.pagegrpnum }" />      
+    <input type="hidden" name="pagegrpnum"   value="${ map.pagegrpnum }" />      --%>
     <!-- 자료실 pdsList -->   
     <table id="PdsView">
-      <caption><h2>${ menu_id } 수정하기 </h2></caption>
+      <caption><h2> 수정하기 </h2></caption>
       <tr>
          <td>작성자</td>
-         <td>${ pdsVo.writer }</td>
+         <td>${ pdsVo.user_id }</td>
          <td>작성일</td>
-         <td>${ pdsVo.regdate }</td>
+         <td>${ pdsVo.board_regdate }</td>
        </tr> 
        <tr>
          <td>글번호</td>
-         <td>${ pdsVo.idx }</td>
+         <td>${ pdsVo.board_idx }</td>
          <td>조회수</td>
          <td>${ pdsVo.readcount }</td>
        </tr> 
        <tr>
          <td>글제목</td>
          <td  colspan="3">
-           <input type="text" name="title" value="${ pdsVo.title }" />
+           <input type="text" name="board_title" value="${ pdsVo.board_title }" />
          </td>
        </tr> 
        <tr>
          <td>내용</td>
          <td  colspan="3">
-           <textarea name="cont">${ pdsVo.cont }</textarea>
+           <textarea name="board_cont">${ pdsVo.board_cont }</textarea>
          </td>
        </tr> 
-       <tr>
+       
+ <%--   <tr>
          <td>파일</td>
          <td  colspan="3" id="tdfile">
            <c:forEach var="file" items="${ filesList }">
@@ -127,10 +125,12 @@
                       
          </td>
        </tr> 
+--%>   
+        
        <tr>
          <td  colspan="4">
            <input type="submit" value="수정" />
-           <input type="button" id="btnList" value="목록" />
+           <input type="button" id="btnList" value="목록" onclick="location.href='http://localhost:8080/Pds/board';" />
          </td>
        </tr> 
        

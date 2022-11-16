@@ -16,7 +16,7 @@
 	<h2>사진첩</h2>
 
  <c:forEach var="list" items="${ImageList}">
-	  <img src="/imgup/${list.sfilename}"  height="200" width="400"/>
+	  <a href="/Pds/View?board_idx=${ list.board_idx  }&menu_idx=3"><img src="/imgup/${list.sfilename}"  height="200" width="400" /></a>
  </c:forEach>
 
 </body>

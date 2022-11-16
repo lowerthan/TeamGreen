@@ -5,6 +5,21 @@
 
 <mapper namespace="Pds">
  
+ 
+ <!-- 내용 보기 -->
+    <select id            = "Pds"
+            parameterType = "hashmap"
+            resultType    = "com.green.pds.vo.PdsVo">
+      SELECT
+	    *
+	 FROM
+	    BOARD
+     WHERE
+        BOARD_IDX   = #{ board_idx }
+    </select>
+ 
+ 
+ 
    <!-- 새글 쓰기 -->
     <insert  id="PdsInsert" >
     INSERT INTO BOARD (
@@ -27,11 +42,11 @@
 	    #{board_title},
 	     SYSDATE,
 	    0,
+	    ( SELECT NVL(MAX(BOARD_IDX),0)+1 FROM BOARD  ),
 	    0,
 	    0,
-	     0,
-	     0,
-	     1,
+	    ( SELECT NVL(MAX(BOARD_IDX),0)+1 FROM BOARD ),
+	     1, 											<!--  #{moim_idx}하면 부적절한 식별자 뜸 -->
 	   #{board_cont}
 	)    
     </insert>
@@ -114,8 +129,7 @@
    	  
        WHERE  
          MENU_IDX = 1
-       
-   	     ORDER BY   NREF  DESC, STEP ASC
+   	     ORDER BY   BOARD_REGDATE DESC
    
    </select>
    
@@ -196,9 +210,10 @@
   <!-- BOARD_IDX 로 Board 테이블 글 수정 -->
   <update  id="UpdatePds">
      UPDATE   BOARD
-      SET     board_title  = #{ board_title },
-              BOARD_CONT   = #{ board_cont  }
-      WHERE   BOARD_IDX    = ${ board_idx   }
+      SET     BOARD_TITLE  = #{ board_title },
+              BOARD_CONT   = #{ board_cont }
+      WHERE   BOARD_IDX    = #{ board_idx }
+  
   
   </update>
   
@@ -210,10 +225,11 @@
 
 
 	<select id="selectImage" resultType="com.green.pds.vo.FilesVo" >
-	SELECT F.SFILENAME FROM BOARD B ,FILES F
-WHERE 1=1
-AND MOIM_IDX = #{moim_idx}
-AND B.BOARD_IDX = F.BOARD_IDX
+	SELECT F.SFILENAME, B.BOARD_IDX 
+	FROM BOARD B ,FILES F
+	WHERE 1=1
+	AND MOIM_IDX = #{moim_idx}
+	AND B.BOARD_IDX = F.BOARD_IDX
    </select>
 
 
@@ -231,9 +247,9 @@ AND B.BOARD_IDX = F.BOARD_IDX
      BOARD_CONT
 	 )VALUES (
 	#{board_idx},
-    #{user_id},
-	#{menu_idx},
-	  #{moim_idx},
+    'sky',
+	3,
+	 1,
 	   #{board_title},
 	 #{board_cont}
   )
@@ -249,8 +265,8 @@ AND B.BOARD_IDX = F.BOARD_IDX
       SFILENAME
 	 )VALUES (
 	 ( SELECT NVL(MAX(FILE_NUM),0)+1 FROM FILES ) ,
-     #{idx},
-	#{filename},
+     #{board_idx},
+	 #{filename},
 	  #{fileext},
 	 #{sfilename}
   )
