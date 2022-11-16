@@ -18,7 +18,7 @@
     <mvc:resources location="/WEB-INF/resources/js/"   mapping="/js/**" />
     <mvc:resources location="/WEB-INF/resources/img/"  mapping="/img/**" />
     <!-- 일반 파일 업로드 경로 -->
-	<mvc:resources location="/WEB-INF/resources/imgup/" mapping="/imgup/**" />
+	<mvc:resources location="file:///D:\\ws\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamGreen\\WEB-INF\\resources\\imgup\\" mapping="/imgup/**" />
     <!--  html 추가 -->
     <mvc:resources location="/WEB-INF/static/"         mapping="/static/**" />
     

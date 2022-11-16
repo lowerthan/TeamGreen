@@ -297,9 +297,11 @@ public class PdsController {
 
 		UUID uuid = UUID.randomUUID();
 		String imageFileName = uuid+"_"+pdsVo.getFile().getOriginalFilename();
-		//System.out.println("파일명 : "+imageFileName);
+		System.out.println("파일명 : "+imageFileName);
 
-	    String uploadFolder ="D:\\ws\\spring\\TeamGreen\\src\\main\\webapp\\WEB-INF\\resources\\imgup\\";
+	    //String uploadFolder ="D:\\ws\\spring\\TeamGreen\\bin\\main\\webapp\\WEB-INF\\resources\\imgup\\";
+	    String uploadFolder ="D:\\ws\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamGreen\\WEB-INF\\resources\\imgup\\";
+	    
 
 
 		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
