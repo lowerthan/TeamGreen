@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+
+	<!-- 진성이 담당한 부분 -->
+	<select id="UserInfo"
+      resultType="com.green.user.vo.UserVo">
+      SELECT 	USER_ID, 
+      			USER_PW,
+      			USER_NAME,
+      			USER_CATE,
+      			UNIVNAME
+      FROM  	MUSER
+      WHERE 	USER_ID = #{user_id}
+    </select>
+	
+	<insert id="inputMoim">
+   		INSERT INTO MOIM( MOIM_IDX, MOIM_NAME, UNIVNAME, MOIM_CATE, USER_ID, MOIM_INTRO)
+    		VALUES ( (SELECT NVL(MAX(MOIM_IDX)+1,0) FROM MOIM) ,
+    			#{moim_name},
+    			#{univname},
+    			#{moim_cate},
+    			#{user_id},
+    			#{moim_intro})
+   </insert>
+   
+   	<insert id="inputMoimUser"
+		parameterType="hashmap">
+		INSERT INTO MOIMUSER( MOIM_IDX, USER_ID)
+			VALUES (#{moim_idx}, #{user_id})
+
+	</insert>
+	
+	<select id="moim_name_check"
+   		resultType="int">
+   		SELECT  COUNT(MOIM_NAME)
+		FROM    MOIM
+		WHERE   MOIM_NAME = #{moim_name}
+   </select>
+	
+	
+	
+	<!-- 현태행님 담당한 부분 ==.. 위에꺼랑 동일?? -->
+	<select id="User" resultType="com.green.user.vo.UserVo">
+      SELECT	USER_ID, 
+      			USER_PW, 
+      			USER_NAME, 
+      			USER_CATE, 
+      			UNIVNAME
+        FROM   	MUSER
+       WHERE   	USER_ID = #{user_id}
+    </select>
+	
+	<update id="UserUpdate">
+       UPDATE   muser
+         SET    user_name = #{user_name},
+         		user_pw   = #{user_pw},
+         		user_cate   = #{user_cate},
+                univname  = #{univname}
+         WHERE  user_id   = #{user_id}
+    </update>
+    
+    <select id="Usermoimslist" resultType="com.green.user.vo.MoimuserVo">
+      SELECT  moimuser.user_id, moimuser.moim_idx, moim.moim_name, moim.moim_cate, moim.moim_intro
+        FROM   moimuser, moim
+       WHERE   moimuser.moim_idx = moim.moim_idx
+         AND  moimuser.user_id = #{user_id}
+    </select>
+    
+    <select id="Regcheck" resultType="int">
+      SELECT  count(moimuser.user_id)
+        FROM  moimuser
+       WHERE  moimuser.moim_idx = #{moim_idx}
+         AND  moimuser.user_id = #{user_id}
+    </select>
+    
+    
+    <update id="delete_moimuser">
+      DELETE FROM   moimuser
+            WHERE   user_id = #{user_id}
+              AND   moim_idx = #{moim_idx}
+    </update>
+    
+    
+	
+	<!-- 아래 2개는 내가 담당한 부분 -->
+	<select id="login"
+        resultType="com.green.user.vo.UserVo">
+     SELECT *
+      FROM  MUSER
+      WHERE USER_ID = #{user_id}
+      AND   USER_PW = #{user_pw}    
+    
+    </select>
+    
+    <insert id="insertUser">
+    INSERT INTO MUSER (
+    		USER_ID, 
+            USER_PW,
+            USER_NAME,
+            USER_CATE,
+            UNIVNAME
+		) VALUES (
+            #{user_id, jdbcType=VARCHAR},
+            #{user_pw, jdbcType=VARCHAR},
+            #{user_name, jdbcType=VARCHAR},
+            #{user_cate, jdbcType=VARCHAR},
+            #{univname, jdbcType=VARCHAR}
+		)
+    </insert>
+      
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
