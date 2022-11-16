@@ -70,23 +70,24 @@ public class PdsDaoImpl implements PdsDao {
 		
 	}
 
-	@Override
-	public void setDelete(HashMap<String, Object> map) {
-		
-		// 삭제될 파일 목록
-		List<FilesVo>  filesList   =  sqlSession.selectList("Pds.PdsFileList", map);
-		map.put("filesList", filesList);
-		
-		sqlSession.delete( "Pds.DeleteFiles", map );  // Files 테이블 정보 삭제(idx)
-		sqlSession.delete( "Pds.DeletePds",   map );  // Board 테이블 정보 삭제(idx)
-		
-	}
+	   @Override
+	   public void deleteFileData(HashMap<String, Object> map) {
+	      sqlSession.delete( "Pds.DeleteFiles", map );  // Files 테이블 정보 삭제(idx)
+	   }
+	   
+	   @Override
+	   public void deleteBoardData(HashMap<String, Object> map) {
+	      sqlSession.delete( "Pds.DeletePds",   map );  // Board 테이블 정보 삭제(idx)
+	   }
 
 	@Override
 	public void setUpdate(HashMap<String, Object> map) {
+		System.out.println("고등어");
 		
 		// 1. Board 정보 수정
 		sqlSession.update("Pds.UpdatePds", map);
+		
+		System.out.println("update가자:" + map);
 		
 		// 2. Files 에 추가된 파일 정보 저장		
 		List<FilesVo> filesList = (List<FilesVo>) map.get("filesList") ;

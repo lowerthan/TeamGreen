@@ -39,9 +39,7 @@
 </head>
 <body> 
    <div id="main">
-      <!-- 자료실 메뉴 목록 -->
-      <%@include file="/WEB-INF/include/pdsmenus.jsp" %>
-      
+   
       <!-- 자료실 pdsList -->   
       <table id="PdsView">
        <caption><h2>내용보기</h2></caption>
@@ -49,51 +47,44 @@
        <button type="button" style="float: right" onclick="location.href='http://localhost:8080/User/List';">　마이페이지　</button>
        <tr>
          <td>작성자</td>
-         <td>${ pdsVo.writer }</td>
+         <td>${ pdsVo.user_id }</td>
          <td>작성일</td>
-         <td>${ pdsVo.regdate }</td>
+         <td>${ pdsVo.board_regdate }</td>
        </tr> 
        <tr>
          <td>글번호</td>
-         <td>${ pdsVo.idx }</td>
+         <td>${ pdsVo.board_idx }</td>
          <td>조회수</td>
          <td>${ pdsVo.readcount }</td>
        </tr> 
        <tr>
          <td>글제목</td>
-         <td colspan="3">${ pdsVo.title }</td>     
-       </tr> 
+         <td colspan="3">${ pdsVo.board_title }</td>     
+       </tr>
+        
        <tr>
          <td>글내용</td>
          <td colspan="3">
-           ${fn:replace(pdsVo.cont, newLine, "<br />" ) } <!-- "\n" 안먹음 -->
+<%--       ${fn:replace(pdsVo.board_cont, newLine, "<br />" ) } <!-- "\n" 안먹음 -->  --%>
+           ${pdsVo.board_cont } <!-- "\n" 안먹음 -->
          </td>     
        </tr> 
-       <tr>
-         <td>파일</td>
-         <td colspan="3">
-	      <c:forEach  var="file" items="${ filesList  }">
-	        <div>
-	         <%--  <a href="/Pds/download/external/${ file.sfilename }"> --%> 
-	         <a href="<c:out value="/Pds/download/external/${ file.sfilename }"  />">
-	          ${ file.filename }
-	          </a>
-	        </div>
-	      </c:forEach>          
-         </td>     
-       </tr> 
+       
+       </table>
+
+       
        <tr>
          <td colspan="4">
-         <button type="button" onclick="location.href='/Pds/WriteForm?menu_id=${map.menu_id}&bnum=0&lvl=0&step=0&nref=0&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}';">　글쓰기　</button>
-         <button type="button" onclick="location.href='/Pds/WriteForm?menu_id=${map.menu_id}&idx=${pdsVo.idx}&bnum=${pdsVo.bnum}&lvl=${pdsVo.lvl}&step=${pdsVo.step}&nref=${pdsVo.nref}';">　답글 쓰기　</button>
-         <button type="button" onclick="location.href='/Pds/UpdateForm?menu_id=${menu_id}&idx=${pdsVo.idx}&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}';">　수정　</button>
-         <button type="button" onclick="location.href='/Pds/Delete?menu_id=${menu_id}&idx=${pdsVo.idx}&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}';">　삭제　</button>
-         <button type="button" onclick="location.href='javascript:history.back()';">　이전으로　</button>
-         <button type="button" onclick="location.href='/';">　홈으로　</button>
+         <button type="button"  onclick="location.href='/Pds/WriteForm?menu_idx=${pdsVo.menu_idx}&bnum=0&lvl=0&step=0&nref=0';">　글쓰기　</button>
+<%-- 	 <button type="button"  onclick="location.href='/Pds/WriteForm?menu_idx=${pdsVo.menu_idx}&bnum=${pdsVo.bnum}&lvl=${pdsVo.lvl}&step=${pdsVo.step}&nref=${pdsVo.nref}';">　답글 쓰기　</button>		 --%>
+         <button type="button"  onclick="location.href='/Pds/UpdateForm?menu_idx=${pdsVo.menu_idx}&board_idx=${map.board_idx}';">　수정　</button>
+     	 <button type="button"  onclick="location.href='/Pds/Delete?menu_idx=${pdsVo.menu_idx}&board_idx=${map.board_idx}';">　삭제　</button> 	
+         <button type="button"  onclick="location.href='javascript:history.back()';">　이전으로　</button>
+         <button type="button"  onclick="location.href='/';">　홈으로　</button> 
 	     </td>     
        </tr> 
        
-   	  </table>
+   	  
    </div> 
 </body>
 </html>
