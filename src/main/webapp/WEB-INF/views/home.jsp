@@ -9,7 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         
-        <title>메인 화면</title>
+        <title>메인 화면 git 바꿔봄</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
         
