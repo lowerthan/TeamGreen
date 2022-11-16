@@ -84,7 +84,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h2 class="display-4 fw-bolder">GreenCom Team 4 <br>Dw + Ss + Ht + Js + Iy</h2>
-                    <p class="lead fw-normal text-white-50 mb-0">당신만의 동아리를 만들어가세요</p>
+                    <p class="lead fw-normal text-white-50 mb-0">순식이 동아리를 만들어가세요</p>
                 </div>
             </div>
         </header>
@@ -237,10 +237,17 @@
 				<c:forEach var="moim" items="${ moimList }" >
 					<div class="moimList">
 				    <ul>
+				      <!--  
+				      <input type="hidden"name="moim_idx" value="${ moim.moim_idx   }">
+				      -->
+				      <div style="display: none">
 				      <li>${ moim.moim_idx   }</li>
-				      <li>${ moim.user_id   }</li>
+				      </div>
+				      <b>${ moim.user_name }</b><br>
 				      <li>${ moim.moim_name   }</li>
-				      <li>${ moim.moim_intro }</li>
+				      ${ moim.moim_intro }
+				      
+				      
 				    </ul>
 					</div>
 				</c:forEach>
