@@ -64,6 +64,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void updateUser(UserVo user) {
+		System.out.println(user);
 		sqlSession.update("User.UserUpdate", user);
 		
 	}

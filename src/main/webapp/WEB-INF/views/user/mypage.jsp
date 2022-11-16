@@ -17,16 +17,23 @@
       document.getElementById("univname").value = pick;
   }
         
-  function msg(){ // 수정버튼 클릭 
+  function chk(){ // 수정버튼 클릭 
+	  var pw = document.myinfo.user_pw.value;
+	  if(pw == ""){
+		  alert("비밀번호를 입력하세요.")
+		  document.myinfo.user_pw.focus();
+          return false;
+	  }
 	  alert('수정완료');
   }
+ 
 </script>
 </head>
 <body>
    <a href="/">Home</a>
    <a href="/logout">로그아웃</a>
   <p id="show"></p>
-  <form id="myinfo" action="/Update" method="POST">
+  <form name="myinfo" id="myinfo"  action="/Update" method="POST" >
       <fieldset>
          <legend>사용자 정보</legend>
          <ul>
@@ -40,8 +47,8 @@
                <input type="password" name="user_pw" required value="${ sessionScope.login.user_pw }">
             </li>
             <li>
-               <label>이름 :</label>
-               <input type="text" id="user_name" name="user_name"  value="${ sessionScope.login.user_name }">
+               <label>이름 : ${ sessionScope.login.user_name }</label>
+               <input type="hidden" name="user_name"  value="${ sessionScope.login.user_name }">
             </li>
             <li>
                <label>학교 :</label>
@@ -105,7 +112,7 @@
          </ul>
       </fieldset>
       <div id="buttons">
-         <input type="submit" value="수정하기" onclick="msg();" >
+         <input type="submit" value="수정하기"  onclick="return chk()" >
          <input type="reset" value="취소">
        </div>
    </form>
