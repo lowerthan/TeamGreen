@@ -76,7 +76,7 @@
 	onsubmit="DoJoinForm__submit(this); return false;" 밑에 joinForm 옆에 있던거-->
 	<form action="/signUpProcess" method="POST" class="joinForm" >
                                                                                                
-	<h2>소모임 + 에브리타임을 섞은 <br> 우리 사이트 회원가입을 환영합니다 <br> '\'이건 연습용 제목'\'</h2>
+	<h2>소모임 + 에브리타임을 섞은 <br> 우리 사이트 회원가입을 환영합니다</h2>
 		<div class="textForm">
 		  <input name="user_id" type="text" class="user_id" id="user_id" placeholder="아이디">
 		</div>
@@ -101,7 +101,7 @@
 		       <input type="text" id="univname" name="univname" readonly>
                <input type="button" value="학교검색" onclick="showPopup();">
 		</div>
-		<input type="submit" class="btn" value="가입하기"/>
+		<input type="submit" class="btn1" value="가입하기"/>
     </form>
 	
 </body>
