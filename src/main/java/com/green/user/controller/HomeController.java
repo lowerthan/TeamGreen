@@ -55,8 +55,6 @@ public class HomeController {
 		return "home";										//WEB-INF/views/user/home.jsp
 	}
 
-	
-	
 	// 로그인
 	// 현재 로그아웃시&"/signUpProcess" == signUpForm.jsp에서 가입하기 버튼 클릭
 	@RequestMapping("/login")								
@@ -73,7 +71,6 @@ public class HomeController {
 		if( session.getAttribute("login") != null ) {		// 기존 login 이란 session 에 값이 존재한다면
 			session.removeAttribute("login");  				// 기존값을 제거한다
 		}
-		
 		// 로그인을 성공하면 UserVo 객체를 반환
 		UserVo  vo  = userService.login( map );
 		if ( vo != null ) {
@@ -84,7 +81,6 @@ public class HomeController {
 		}
 		return returnURL;		
 	}
-	
 	// 로그아웃("/logout") home 화면의 로그아웃 클릭
 	@RequestMapping("/logout") 
 	public  String  logout(HttpSession session) {
