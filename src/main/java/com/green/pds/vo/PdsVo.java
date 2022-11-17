@@ -21,17 +21,24 @@ public class PdsVo {
 	// 현재 menu 정보
 	private  int  menu_idx;
 
-	private int moim_idx;
+	private int   moim_idx;
 	
 	// 파일관련
 	private MultipartFile file;
 
 	private  int  filescount;
 
+	//paging 처리를 위해 추가
+	private int nowpage; //현재페이지
+	private int prevnowpage; //이전 10개를 클릭시 적용되는 nowpage
+	private int nextnowpage; //다음 10개를 클릭시 적용되는  nowpage
+	
+	
 	// Constructor
 	public PdsVo() { }
 
-	public PdsVo(int board_idx, String board_title, String board_cont, String user_id, String board_regdate, String readcount, int bnum, int lvl, int step, int nref, int menu_idx, int moim_idx, MultipartFile file, int filescount) {
+	public PdsVo(int board_idx, String board_title, String board_cont, String user_id, String board_regdate, String readcount, int bnum, int lvl, int step, int nref, int menu_idx, MultipartFile file, int filescount,
+			int nowpage, int prevnowpage, int nextnowpage, int moim_idx) {
 		this.board_idx = board_idx;
 		this.board_title = board_title;
 		this.board_cont = board_cont;
@@ -46,7 +53,13 @@ public class PdsVo {
 		this.moim_idx = moim_idx;
 		this.file = file;
 		this.filescount = filescount;
+		this.nowpage = nowpage;
+		this.prevnowpage = prevnowpage;
+		this.nextnowpage = nextnowpage;
+		
 	}
+
+
 
 	public int getBoard_idx() {
 		return board_idx;
@@ -136,11 +149,11 @@ public class PdsVo {
 		this.menu_idx = menu_idx;
 	}
 
-	public int getMoimIdx() {
+	public int getMoim_idx() {
 		return moim_idx;
 	}
 
-	public void setMoimIdx(int moim_idx) {
+	public void setMoim_idx(int moim_idx) {
 		this.moim_idx = moim_idx;
 	}
 
@@ -160,30 +173,46 @@ public class PdsVo {
 		this.filescount = filescount;
 	}
 
-	@Override
-	public String toString() {
-		return "PdsVo{" +
-				"board_idx=" + board_idx +
-				", board_title='" + board_title + '\'' +
-				", board_cont='" + board_cont + '\'' +
-				", user_id='" + user_id + '\'' +
-				", board_regdate='" + board_regdate + '\'' +
-				", readcount='" + readcount + '\'' +
-				", bnum=" + bnum +
-				", lvl=" + lvl +
-				", step=" + step +
-				", nref=" + nref +
-				", menu_idx=" + menu_idx +
-				", moim_idx=" + moim_idx +
-				", file=" + file +
-				", filescount=" + filescount +
-				'}';
+	public int getNowpage() {
+		return nowpage;
 	}
 
-	public int getMenu_board_idx() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void setNowpage(int nowpage) {
+		this.nowpage = nowpage;
 	}
+
+	public int getPrevnowpage() {
+		return prevnowpage;
+	}
+
+	public void setPrevnowpage(int prevnowpage) {
+		this.prevnowpage = prevnowpage;
+	}
+
+	public int getNextnowpage() {
+		return nextnowpage;
+	}
+
+	public void setNextnowpage(int nextnowpage) {
+		this.nextnowpage = nextnowpage;
+	}
+
+	@Override
+	public String toString() {
+		return "PdsVo [board_idx=" + board_idx + ", board_title=" + board_title + ", board_cont=" + board_cont
+				+ ", user_id=" + user_id + ", board_regdate=" + board_regdate + ", readcount=" + readcount + ", bnum="
+				+ bnum + ", lvl=" + lvl + ", step=" + step + ", nref=" + nref + ", menu_idx=" + menu_idx + ", moim_idx="
+				+ moim_idx + ", file=" + file + ", filescount=" + filescount + ", nowpage=" + nowpage + ", prevnowpage="
+				+ prevnowpage + ", nextnowpage=" + nextnowpage + "]";
+	}
+
+	
+	
+	
+//	public int getMenu_board_idx() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 		
 	
 }

@@ -58,7 +58,7 @@
        UPDATE   muser
          SET    user_name = #{user_name},
          		user_pw   = #{user_pw},
-         		user_cate   = #{user_cate},
+         		user_cate   = #{user_cate, jdbcType=VARCHAR},
                 univname  = #{univname}
          WHERE  user_id   = #{user_id}
     </update>

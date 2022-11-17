@@ -20,12 +20,9 @@
 </head>
 <body>
   <div id="main">
-      <!-- 자료실 메뉴 목록 -->
-      <%@include file="/WEB-INF/include/pdsmenus.jsp" %>
       
       <!-- 자료실 pdsList -->   
      <table id="PdsList">
-       <caption><h2>${ moim_idx }</h2></caption>
        <caption><h2>자유게시판</h2></caption>
        <button type="button" style="float: right" onclick="location.href='/';">　홈으로　</button>
        <button type="button" style="float: right" onclick="location.href='http://localhost:8080/User/List';">　마이페이지　</button>
@@ -40,7 +37,6 @@
          <td>제목</td>
          <td>작성자</td>
          <td>조회수</td>
-         <td>파일첨부</td>
          <td>작성일</td>       
        </tr>     
      
@@ -53,19 +49,18 @@
 	         ${ pds.bnum }
 	       </c:if>
          </td>
-        
         <!-- 제목 -->        
          <td>        
            <!-- 새글/답글 -->
            <c:choose> 
             <c:when test="${ pds.lvl eq 0 }">
-              <a href="/Pds/View?menu_idx=${ pds.menu_idx }&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}">
+              <a href="/Pds/View?board_idx=${ pds.board_idx }&menu_idx=${ pds.menu_idx }">
               ${ pds.board_title }
               </a>
             </c:when>            
             <c:otherwise>
              <b style="display:inline-block;width:${pds.lvl*20}px"></b> 
-             <a href="/Pds/View?menu_idx=${ pds.menu_idx }&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}">
+             <a href="/Pds/View?board_idx=${ pds.board_idx }&menu_idx=${ pds.menu_idx }&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}">
               [답글]  ${ pds.board_title }
              </a> 
             </c:otherwise>
@@ -76,18 +71,6 @@
          <td>${ pds.user_id }</td>
          <!-- 조회수  -->
          <td>${ pds.readcount }</td>
-         <!-- 파일첨부수  -->
-         <td>
-         <c:choose>
-          <c:when test="${pds.filescount eq 0 }">
-            &nbsp;
-          </c:when>
-          <c:otherwise>
-        	 ${ pds.filescount }          
-          </c:otherwise>         
-         </c:choose>
-         
-         </td>
          <!-- 작성일  -->
          <td>${fn:substring(pds.board_regdate, 0, 10) }</td>     
          
