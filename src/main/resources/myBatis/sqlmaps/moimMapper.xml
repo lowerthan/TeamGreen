@@ -14,6 +14,14 @@
     			#{user_id},
     			#{moim_intro})
 	</insert>
+	
+	<insert id="inputMoimuser">
+      <selectKey resultType="String" keyProperty="moim_idx" order="BEFORE">
+        SELECT MAX(moim_idx) FROM moim        
+      </selectKey>    
+      INSERT INTO moimuser(moim_idx, user_id)
+      VALUES(#{moim_idx}, #{user_id})
+    </insert> 
   
 	<select id="MoimList"
 	      resultType="com.green.moim.vo.MoimVo">
@@ -31,6 +39,27 @@
 		  ORDER BY MOIM_IDX ASC
 	
 	</select>
+	
+	   <!-- 모임추천리스트 뽑기 -->
+   <select id="getRecommend" resultType="com.green.moim.vo.MoimVo">
+               SELECT DISTINCT moim.moim_idx,
+	                  moim.moim_name,
+                      moim.moim_cate,
+                      moim.user_id,
+                      moim.moim_intro,
+	                  moim.univname,
+                      muser.user_name
+                 FROM moim, muser, (
+                                   SELECT moim_idx
+                                   FROM moimuser
+                                   WHERE user_id != #{user_id}
+                                    ) a
+                WHERE moim.univname= #{univname}
+                  AND INSTR(#{user_cate}, moim.moim_cate)>0
+                  AND moim.user_id = muser.user_id
+                  AND moim.moim_idx = a.moim_idx
+             ORDER BY moim_idx ASC
+    </select>
   
   
 	 <!--KHT_모임정보 가져오기(com.green.moim.vo.MoimVo) -->
