@@ -33,14 +33,28 @@ public class HomeController {
 	@Autowired
 	private  MoimuserService  moimuserService;
 	 
-	// 홈&인터셉터
 	@RequestMapping("/")
-	public  String  home(Model model) {
-		List<MoimVo> moimList = moimService.getMoimList();  // home화면의 모임리스트 
-		model.addAttribute("moimList", moimList);			// 홈화면의 c:forEach문의 아이템 moimList
-		// System.out.println(moimList);
+	public String test() {
+		
+		return "startpage";
+	}
+	// 홈&인터셉터
+	@RequestMapping("/mainpage")
+	public  String  home(Model model,
+			HttpSession     session,
+			@RequestParam   HashMap<String, Object> map) {
+		String returnURL = "";
+		
+		if( session.getAttribute("login") != null ) {		// 기존 login 이란 session 에 값이 존재한다면
+			List<MoimVo> moimList = moimService.getMoimList();  // home화면의 모임리스트 
+			model.addAttribute("moimList", moimList);			// 홈화면의 c:forEach문의 아이템 moimList
+			System.out.println(moimList);
+			return "home";  								
+		}
 		return "home";										//WEB-INF/views/user/home.jsp
 	}
+
+	
 	
 	// 로그인
 	// 현재 로그아웃시&"/signUpProcess" == signUpForm.jsp에서 가입하기 버튼 클릭
@@ -63,7 +77,7 @@ public class HomeController {
 		UserVo  vo  = userService.login( map );
 		if ( vo != null ) {
 			session.setAttribute("login", vo);
-			returnURL = "redirect:/";        				// 로그인 성공시
+			returnURL = "redirect:/mainpage";        				// 로그인 성공시
 		} else {
 			returnURL = "redirect:/login";	 				// 로그인 실패시 수정필요!!!!!!!!!!!!!!!!!!!!!!!	
 		}
@@ -75,6 +89,11 @@ public class HomeController {
 	public  String  logout(HttpSession session) {
 		session.invalidate();								// 로그아웃시 세션값 비우기
 		return "redirect:/login";  							// 로그아웃시 이동할 주소 -> /login
+	}
+	@RequestMapping("/logout2") 
+	public  String  logout2(HttpSession session) {
+		session.invalidate();								// 로그아웃시 세션값 비우기
+		return "home";  							// 로그아웃시 이동할 주소 -> /login
 	}
 	
 	// loginForm.jsp 파일의 회원가입 버튼 클릭
@@ -119,7 +138,7 @@ public class HomeController {
 		userService.updateUser( user ); //입력된 새로운 데이터를 테이블에 UPDATE
 		session.setAttribute("login", user); //세션값도 user로 바꿈
 		
-		return   "redirect:/";  //WEB-INF/views/user/home.jsp
+		return   "redirect:/mainpage";  //WEB-INF/views/user/home.jsp
 	}
 	
 	@RequestMapping("sign_moim_user")
@@ -147,6 +166,11 @@ public class HomeController {
 		
 		return "redirect:/Moim/moimpage?moim_idx=" + map.get("moim_idx");
 	}
+	
+
+		
+		
+	
 	
 }
 
