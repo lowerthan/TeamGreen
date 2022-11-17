@@ -96,7 +96,7 @@
     <p class="lead">에브리타임 + 소모임 어플 Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
     <p class="lead">
       <a href="/login" class="btn btn-lg btn-secondary fw-bold border-white bg-white">회원으로 시작하기</a>
-      <a href="/" class="btn btn-lg btn-secondary fw-bold border-white bg-white">비회원으로 시작하기</a>
+      <a href="/mainpage" class="btn btn-lg btn-secondary fw-bold border-white bg-white">비회원으로 시작하기</a>
     </p>
 
   </main>
