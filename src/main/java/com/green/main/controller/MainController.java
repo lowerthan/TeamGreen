@@ -1,12 +1,15 @@
 package com.green.main.controller;
 
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.moim.service.MoimService;
@@ -17,6 +20,8 @@ import com.green.user.vo.UserVo;
 @Controller
 @RequestMapping("/Main") 
 public class MainController {
+	// 절대경로라서 새로 프로젝트 받으면 수정 요망
+	String uploadFolder = "D:\\ws\\spring\\TeamGreentry\\src\\main\\webapp\\WEB-INF\\resources\\img";
 	
 	@Autowired
 	private UserService userService;
@@ -32,18 +37,39 @@ public class MainController {
 		UserVo a = userService.getUserInfo(user_id);			//userVo의 내용 defalut값을 위해 가져옴 
 		// System.out.println( a );
 		mv.addObject("a", a);
-		mv.setViewName("/user/createmoim");						//WEB-INF/views/user/createmoim.jsp  경로수정필요해보임!!
+		mv.setViewName("/main/createmoim");						//WEB-INF/views/user/createmoim.jsp  경로수정필요해보임!!
 		
 		return mv;
 	}
 	
 	// createmoim.jsp에서 생성하기 모임개설하기 버튼 클릭시 
 	@RequestMapping("/Inputmoim")
-	public ModelAndView InputMoim(MoimVo moimVo) {
-
+	public ModelAndView InputMoim(MoimVo moimVo,
+				MultipartFile[] uploadFile, Model model) {
+		System.out.println("uploadFile = " + uploadFile);
+		String moim_name = moimVo.getMoim_name();
+		String moim_Thumbnail_name = moim_name+"_"+"thumbnail";
+		
+		
 		ModelAndView mv = new ModelAndView();
 		moimService.inputMoim(moimVo);							//테이블에 개설한 모임내용(moimVo)을 추가
-		mv.setViewName("redirect:/mainpage");							// home.jsp 리다이렉트
+		System.out.println(moimVo);
+		
+		for(MultipartFile multipartFile : uploadFile) {
+			System.out.println("------------------");
+			System.out.println("Upload File name: " + multipartFile.getOriginalFilename());
+			System.out.println("Upload File Size: " + multipartFile.getSize());
+			
+			
+			File saveFile = new File(uploadFolder, moim_Thumbnail_name +".jpg");
+			
+			try {
+				multipartFile.transferTo(saveFile);
+			} catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		mv.setViewName("redirect:/mainpage");						// home.jsp 리다이렉트
 		return mv;
 	}
 	

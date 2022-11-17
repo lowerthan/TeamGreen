@@ -1,10 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>  
+<%
+ response.setHeader("Cache-Control","no-cache");
+ response.setHeader("Pragma","no-cache");
+ response.setDateHeader("Expires",0);
+%>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
 <title>모임화면</title>
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 <link rel="stylesheet" href="/css/common.css" />
@@ -61,6 +71,7 @@ $(document).ready(function(){
 <%--  모임 화면 나오면 전부수정 !!!!!!!!!!!!!!!!--%>
 	<h1>${ moimVo.moim_name }</h1>
 	<h2>${ moimVo.moim_intro }</h2> 
+	<img class="NO-CACHE" name="thumbnail" src="/img/${moimVo.moim_name}_thumbnail.jpg" width="400" height="200" border="3">
 
 	<a href="/Pds/board"   style="float: left">자유게시판</a><br>
 <!--<a href="/Pds/List?menu_id=MENU01&nowpage=1&pagecount=4&pagegrpnum=1">자료실 페이징</a><br>-->
