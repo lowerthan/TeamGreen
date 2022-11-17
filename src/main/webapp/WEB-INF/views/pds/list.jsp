@@ -38,8 +38,6 @@ case
  	
        <caption><h2>${ menu_idx }</h2></caption>
        
-       
-       
        <button type="button" style="float: right" onclick="location.href='/';">　홈으로　</button>
        <button type="button" style="float: right" onclick="location.href='http://localhost:8080/User/List';">　마이페이지　</button>
        <!-- 새글 쓰기 -->
