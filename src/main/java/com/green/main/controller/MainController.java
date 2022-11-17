@@ -20,7 +20,7 @@ import com.green.user.vo.UserVo;
 @Controller
 @RequestMapping("/Main") 
 public class MainController {
-	// 절대경로라서 새로 프로젝트 받으면 수정 요망
+	// 절대경로라서 새로 프로젝트 받으면 수정 요
 	String uploadFolder = "D:\\ws\\spring\\TeamGreentry\\src\\main\\webapp\\WEB-INF\\resources\\img";
 	
 	@Autowired
@@ -37,7 +37,7 @@ public class MainController {
 		UserVo a = userService.getUserInfo(user_id);			//userVo의 내용 defalut값을 위해 가져옴 
 		// System.out.println( a );
 		mv.addObject("a", a);
-		mv.setViewName("/main/createmoim");						//WEB-INF/views/user/createmoim.jsp  경로수정필요해보임!!
+		mv.setViewName("/user/createmoim");						//WEB-INF/views/user/createmoim.jsp  경로수정필요해보임!!
 		
 		return mv;
 	}
