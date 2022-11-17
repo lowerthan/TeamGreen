@@ -22,6 +22,7 @@
         <!-- 현태 행님이 만든 js, 모임 누르면 해당 모임 화면으로 ?! -->
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"> </script>
 		<script>
+		<!--  
 		$(function(){
 			$('.moimList').on('click', function(e){
 				console.log(e);
@@ -32,17 +33,25 @@
 			
 		})
 		
+		-->
 		</script>
     </head>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="/">소모임 + 에타 사이트</a>
+                <a class="navbar-brand" href="/mainpage">소모임 + 에타 사이트</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">로그인</a></li>
+                        <c:choose>
+                          <c:when test="${  sessionScope.login == null  }" >
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/login">로그인</a></li>
+                          </c:when>
+                          <c:otherwise>
+                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout2">로그아웃</a></li>
+                          </c:otherwise>
+                        </c:choose>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Mypage?user_id=${ sessionScope.login.user_id }">마이 페이지</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Main/Createmoim?user_id=${ sessionScope.login.user_id }">모임 개설</a></li>
                         
@@ -231,23 +240,22 @@
                 </div>
 				<hr>
 
-				${ sessionScope.login.user_id } 님 환영합니다.<br>
-				당신의 이름은 ${ login.user_name } 입니다.<br>
-				<a href="/logout">로그아웃</a>
 				
 				<c:forEach var="moim" items="${ moimList }" >
-					<div class="moimList">
-				    <ul>
-				      <div style="display: none">
-				      <li>${ moim.moim_idx   }</li>
-				      </div>
-				      <b>${ moim.user_name }</b><br>
-				      <li>${ moim.moim_name   }</li>
-				      ${ moim.moim_intro }
-				      
-				      
-				    </ul>
-					</div>
+					       <div class="col">
+	        				<div class="card mb-4 rounded-3 shadow-sm">
+	          				 <div class="card-header py-3">
+	            				<h4 class="my-0 fw-normal">${ moim.moim_name}</h4>
+	          				 </div>
+	          			   <div class="card-body">
+	            			  <h1 class="card-title pricing-card-title">${ moim.user_name }</h1>
+	            				<ul class="list-unstyled mt-3 mb-4">
+					              <li>${ moim.moim_intro }</li>
+	           					</ul>
+					            <a href="/Moim/moimpage?moim_idx=${ moim.moim_idx}"><button type="button" class="w-100 btn btn-lg btn-outline-primary">동아리 바로가기</button></a>
+					          </div>
+					        </div>
+					      </div>
 				</c:forEach>
             </div>
         </section>
