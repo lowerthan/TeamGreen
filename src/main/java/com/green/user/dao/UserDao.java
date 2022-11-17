@@ -32,6 +32,8 @@ public interface UserDao {
 
 	void inputMoimUser(Map<String, Object> map);
 
+	int user_id_check(String user_id);
+
 
 
 
