@@ -39,7 +39,7 @@
 </head>
 <body> 
    <div id="main">
-   
+      
       <!-- 자료실 pdsList -->   
       <table id="PdsView">
        <caption><h2>내용보기</h2></caption>
@@ -75,7 +75,7 @@
        
        <tr>
          <td colspan="4">
-         <button type="button"  onclick="location.href='/Pds/WriteForm?menu_idx=${pdsVo.menu_idx}&bnum=0&lvl=0&step=0&nref=0';">　글쓰기　</button>
+         <button type="button"  onclick="location.href='/Pds/WriteForm?menu_idx=${ menu_idx }&bnum=0&lvl=0&step=0&nref=0&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}';">　글쓰기　</button>
 <%-- 	 <button type="button"  onclick="location.href='/Pds/WriteForm?menu_idx=${pdsVo.menu_idx}&bnum=${pdsVo.bnum}&lvl=${pdsVo.lvl}&step=${pdsVo.step}&nref=${pdsVo.nref}';">　답글 쓰기　</button>		 --%>
          <button type="button"  onclick="location.href='/Pds/UpdateForm?menu_idx=${pdsVo.menu_idx}&board_idx=${map.board_idx}';">　수정　</button>
      	 <button type="button"  onclick="location.href='/Pds/Delete?menu_idx=${pdsVo.menu_idx}&board_idx=${map.board_idx}';">　삭제　</button> 	

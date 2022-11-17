@@ -17,19 +17,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-   var num = 1;
-   $(function() {
 
-
-	   $('#btnAddFile').on('click', function() {
-		   let tag  = '<input type="file" name=\"upfile' + num;
-		   tag     += '\" class="upfile" /><br>';
-		   $('#tdfile').append( tag  );
-		   alert(tag);
-		   num++;
-	   } );
-   });
-   
   
 </script>
 </head>
@@ -37,18 +25,15 @@
   <div id="main">
     
     <!-- 새글 쓰기 자료실 -->
-    <!--  파일전송시 필수 enctype = "multipart/form-data" -->
     <form action = "/Pds/Write" method="POST" id="form1">
-<input type="hidden" name="menu_idx"   value="1"/>
-
-<%--      <input type="hidden" name="menu_id"      value="${ menu_id }" />
-      <input type="hidden" name="bnum"         value="${ pdsvo.bnum }" />   
-      <input type="hidden" name="lvl"          value="${ pdsvo.lvl  }" />   
-      <input type="hidden" name="step"         value="${ pdsvo.step }" />   
-      <input type="hidden" name="nref"         value="${ pdsvo.nref }" />          
-      <input type="hidden" name="nowpage"      value="${ pdsvo.nowpage }" />          
-      <input type="hidden" name="pagecount"    value="${ pdsvo.pagecount }" />          
-      <input type="hidden" name="pagegrpnum"   value="${ pdsvo.pagegrpnum }" />     --%>
+	  <input type="hidden" name="menu_idx"     value="${ map.menu_idx }"/>
+      <input type="hidden" name="bnum"         value="${ map.bnum }" />   
+      <input type="hidden" name="lvl"          value="${ map.lvl  }" />   
+      <input type="hidden" name="step"         value="${ map.step }" />   
+      <input type="hidden" name="nref"         value="${ map.nref }" />          
+      <input type="hidden" name="nowpage"      value="${ map.nowpage }" />          
+      <input type="hidden" name="pagecount"    value="${ map.pagecount }" />          
+      <input type="hidden" name="pagegrpnum"   value="${ map.pagegrpnum }" />   
           
     <table id="pdsWriteTable">
       <caption><h2> 글쓰기 </h2></caption>
@@ -58,21 +43,13 @@
       </tr>
       <tr>
         <td>작성자</td>
-        <td><input type="text" name="user_id" id="user_id"  value="sky" readonly/></td>
+        <td><input type="text" name="user_id" id="user_id"  value="${ sessionScope.login.user_id }" readonly/></td>
       </tr>
       <tr>
         <td>내용</td>
         <td><textarea name="board_cont" id="board_cont"></textarea></td>
       </tr>
-      
-<%--      <tr>
-        <td>파일 첨부</td>
-        <td id="tdfile">
-           <input type="button" id="btnAddFile" value="파일 추가"/><br>
-           <input type="file" name="upfile" class="upfile" /><br>
-        </td>
-      </tr>
---%>    
+         
 
     </table>
       <tr>
@@ -86,7 +63,7 @@
       	  <input type="button" id="prev" value="이전" onclick="location.href='javascript:history.back()';"/>
         </td>
       </tr>
-            </form>
+</form>
   </div>
 </body>
 </html>

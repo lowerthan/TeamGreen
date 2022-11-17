@@ -16,8 +16,8 @@ public class BoardPaging {
 	private  int      prevNowPage;      // 이전페이지 번호
 	private  int      nextNowPage;      // 다음페이지 번호
 	
-	private  int      startPageNum;    // 페이지 시작번호
-	private  int      endPageNum;      // 페이지 끝번호
+	private  int      startNum;    // 페이지 시작번호
+	private  int      endNum;      // 페이지 끝번호
 	
 	private  int      totalRecordPageCount;  // totalCount / pageCount;
 	  // 총 row 수 ( 전채자료수 )로 표현가능한 총 페이지 수 
@@ -97,19 +97,19 @@ public class BoardPaging {
 	}
 
 	public int getStartPageNum() {
-		return startPageNum;
+		return startNum;
 	}
 
-	public void setStartPageNum(int startPageNum) {
-		this.startPageNum = startPageNum;
+	public void setStartPageNum(int startNum) {
+		this.startNum = startNum;
 	}
 
 	public int getEndPageNum() {
-		return endPageNum;
+		return endNum;
 	}
 
-	public void setEndPageNum(int endPageNum) {
-		this.endPageNum = endPageNum;
+	public void setEndPageNum(int endNum) {
+		this.endNum = endNum;
 	}
 
 	public int getTotalRecordPageCount() {
@@ -142,7 +142,7 @@ public class BoardPaging {
 	public String toString() {
 		return "BoardPaging [totalCount=" + totalCount + ", nowPage=" + nowPage + ", prevNowPage=" + prevNowPage
 				+ ", nextNowPage=" + nextNowPage + ", pageCount=" + pageCount + ", pageTotalCount=" + pageTotalCount
-				+ ", pageGrpNum=" + pageGrpNum + ", startPageNum=" + startPageNum + ", endPageNum=" + endPageNum
+				+ ", pageGrpNum=" + pageGrpNum + ", startPageNum=" + startNum + ", endPageNum=" + endNum
 				+ ", totalRecordPageCount=" + totalRecordPageCount + ", isShowPagePrev=" + isShowPagePrev
 				+ ", isShowPageNext=" + isShowPageNext + "]";
 	}
@@ -163,24 +163,24 @@ public class BoardPaging {
 		//  ◀   11     12  13 14 15 16 17 18 19   20         ▶
 		//  ◀   21     22  23 24 25 26            30
 		// 페이지 시작 번호
-		this.startPageNum = 
+		this.startNum = 
 			(pageGrpNum-1) * pageTotalCount + 1;	
 					    
 		// 페이지 끝 번호
-		this.endPageNum   = 
+		this.endNum   = 
 			( totalRecordPageCount < (pageGrpNum * pageTotalCount) ) ?   		
 			 totalRecordPageCount  :  (pageGrpNum * pageTotalCount);	
 		
 		// ◀ [이전 10 개] [다음 10개] ▶ 출력 여부
-		if( startPageNum == 1 ) 
+		if( startNum == 1 ) 
 			this.isShowPagePrev = false;
-		if( endPageNum == totalRecordPageCount ) 
+		if( endNum == totalRecordPageCount ) 
 			this.isShowPageNext = false;
 		
 		// ◀  [이전 10 개] 클릭시 이동할 페이지 번호 계산
-		this.prevNowPage = startPageNum - 1;
+		this.prevNowPage = startNum - 1;
 		// ▶  [다음 10 개] 클릭시 이동할 페이지 번호 계산
-		this.nextNowPage = endPageNum   + 1;
+		this.nextNowPage = endNum   + 1;
 		// 게산끝
 		
 		// 계산된 값을 vo 에 저장
@@ -191,8 +191,8 @@ public class BoardPaging {
 		vo.setTotalcount(this.totalCount);
 		vo.setTotalpagecount(this.pageTotalCount);
 		
-		vo.setPagestartnum(this.startPageNum);
-		vo.setPageendnum(this.endPageNum);
+		vo.setstartnum(this.startNum);
+		vo.setendnum(this.endNum);
 		
 		vo.setPagecount(this.pageCount);
 		vo.setPagegrpnum(this.pageGrpNum);

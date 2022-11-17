@@ -34,12 +34,6 @@ public class PdsDaoImpl implements PdsDao {
 			sqlSession.insert("Pds.PdsReply",   map );			
 		}
 		
-		// Files 테이블에 저장
-		List<FilesVo>  filesList   = (List<FilesVo>) map.get("filesList");
-		System.out.println(filesList.size());
-		if(filesList.size() > 0) {
-			sqlSession.insert("Pds.FileInsert", map);   // 파일정보 저장
-	    }
 		
 	}
 
@@ -56,11 +50,29 @@ public class PdsDaoImpl implements PdsDao {
 
 	@Override
 	public PdsVo getPds(HashMap<String, Object> map) {
+		// 조회수 증가
+		sqlSession.update("Pds.ReadCountUpdate", map );
 		
 		PdsVo  pdsVo  =  sqlSession.selectOne("Pds.GetPds", map);
+		map.put("totCnt", 12345);
 		return pdsVo;
 		
 	}
+	
+//	@Override
+//	public PdsVo getPds2(HashMap<String, Object> map) {
+//		// 조회수 증가
+//		sqlSession.update("Pds.ReadCountUpdate", map );
+//		
+//		// idx 로 게시물 조회
+//		PdsVo  pdsVo  =  sqlSession.selectOne("Pds.GetPds2", map);
+//		map.put("totCnt", 12345);
+//		return pdsVo;
+//		
+//	}
+	
+	
+	
 
 	@Override
 	public List<FilesVo> getFilesList(HashMap<String, Object> map) {
@@ -89,10 +101,6 @@ public class PdsDaoImpl implements PdsDao {
 		
 		System.out.println("update가자:" + map);
 		
-		// 2. Files 에 추가된 파일 정보 저장		
-		List<FilesVo> filesList = (List<FilesVo>) map.get("filesList") ;
-		if( !filesList.isEmpty() ) 
-			sqlSession.insert("Pds.FileInsert", map);   // 파일정보 저장		    
 
 		
 	}
@@ -146,6 +154,12 @@ public class PdsDaoImpl implements PdsDao {
 	@Override
 	public List<FilesVo> selectImage(PdsVo pdsVo) {
 		return sqlSession.selectList("Pds.selectImage",pdsVo);
+	}
+
+	@Override
+	public PdsVo getPds2(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

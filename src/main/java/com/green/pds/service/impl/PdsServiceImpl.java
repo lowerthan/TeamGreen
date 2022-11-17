@@ -28,7 +28,7 @@ public class PdsServiceImpl implements PdsService {
 		//   저장된 파일정보(sfilename) -> map 에 돌려받아옴
 		// 파라미터 map 은 객체type 이라 call by  reference 방식으로 인자를 처리
 		// 인자 호출하는 곳과 함수에 공유한다 inout 파라미터처럼 쓰인다
-		PdsFile.save(map, request);  // 별도  클래스 생성
+//		PdsFile.save(map, request);  // 별도  클래스 생성
 		
 		// 2. 넘어온 정보 db 저장
 		// map 은 fileList가 추가된 map
@@ -50,15 +50,9 @@ public class PdsServiceImpl implements PdsService {
 	// 페이징을 위해 getPdsList() 수정
 		@Override
 		public List<PdsPagingVo> getPdsPagingList(HashMap<String, Object> map) {
-			// {menu_id=MENU01, 
-			// nowpage=1,     -- 현재 (보여줄) 페이지 번호
-			// pagecount=2,   -- 한 페이지 당 보여줄 LINE수
-			// pagegrpnum=1}  -- 페이지 그룹 번호 	
 			
-			// 조회 : menu_id, nowpage, pagecount
 			List<PdsPagingVo> pdsPagingList = pdsDao.getPdsPagingList( map );
 			
-			// 페이징 처리를 위힌 내용 추가             
 			
 			//                                     pagetotalcount
 			// [이전] 1 2 3 4 5 6 7 8 9 10 [다음]     10
@@ -92,7 +86,7 @@ public class PdsServiceImpl implements PdsService {
 			
 			PdsPagingVo        vo  = bp.getPdsPagingInfo();
 			
-			vo.setMenu_idx( (int) map.get("menu_idx") );
+			vo.setMenu_idx(Integer.parseInt( String.valueOf(map.get("menu_idx"))));
 			
 			map.put("pagePdsVo", vo);
 			
@@ -107,6 +101,16 @@ public class PdsServiceImpl implements PdsService {
 		return  pdsVo;
 	}
 
+	
+	@Override
+	public PdsVo getPds2(HashMap<String, Object> map) {
+		
+		PdsVo   pdsVo  =  pdsDao.getPds( map );  
+		
+		return  pdsVo;
+	}
+	
+	
 	@Override
 	public List<FilesVo> getFilesList(HashMap<String, Object> map) {
 		
@@ -152,13 +156,10 @@ public class PdsServiceImpl implements PdsService {
 	   }
 	
 	@Override
-	public void setUpdate(HashMap<String, Object> map,
-			HttpServletRequest request) {
+	public void setUpdate(HashMap<String, Object> map) {
 		// 1. request 넘어온 파일만 저장 : C:\\UPLOAD\\ 
-		PdsFile.save(map, request);		
 		System.out.println("Pds Service setUpdate() map:" + map);
 		
-		// 2 db 정보룰 수정
 		pdsDao.setUpdate( map );
 	}
 
@@ -208,6 +209,13 @@ public class PdsServiceImpl implements PdsService {
 	@Override
 	public List<FilesVo> selectImage(PdsVo pdsVo) {
 		return pdsDao.selectImage(pdsVo);
+	}
+
+	@Override
+	public void setWrite(HashMap<String, Object> map) {
+		
+		pdsDao.setWrite( map );
+
 	}
 }
 

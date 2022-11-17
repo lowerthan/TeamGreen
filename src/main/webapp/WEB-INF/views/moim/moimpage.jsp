@@ -73,9 +73,8 @@ $(document).ready(function(){
 	<h2>${ moimVo.moim_intro }</h2> 
 	<img class="NO-CACHE" name="thumbnail" src="/img/${moimVo.moim_name}_thumbnail.jpg" width="400" height="200" border="3">
 
-	<a href="/Pds/board"   style="float: left">자유게시판</a><br>
-<!--<a href="/Pds/List?menu_id=MENU01&nowpage=1&pagecount=4&pagegrpnum=1">자료실 페이징</a><br>-->
-	<a href="/Pds/Q"       style="float: left">Q & A</a><br>
+	<a href="/Pds/List?menu_idx=1&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">자유게시판</a><br>
+	<a href="/Pds/List?menu_idx=2&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">Q & A</a><br>
 	<a href="/Pds/1/Album" style="float: left">사진첩</a><br>   <%-- 중간 1 자리에 MOIM_IDX 가 들어가야함 !!! --%>
 
 	<hr />
