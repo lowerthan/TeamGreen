@@ -75,6 +75,13 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	@Override
+	public int user_id_check(String user_id) {
+		System.out.println(" user_id : " + user_id);
+		int cnt = sqlSession.selectOne( "User.user_id_check", user_id );
+		return cnt;
+	}
+
 
 
 

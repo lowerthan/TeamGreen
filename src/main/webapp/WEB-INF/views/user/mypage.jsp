@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   function showPopup(){ // 학교검색 팝업창으로 열기
-      newWindow = window.open("/univSearch","학교검색 팝업창","width=400, height=300, top=10, left=10");
+      newWindow = window.open("/univSearch", "학교검색 팝업창", "width=400, height=300, top=10, left=10");
   }
 
   function setChildValue(pick){ // 팝업창 선택한 정보 입력해주기
@@ -30,7 +30,7 @@
 </script>
 </head>
 <body>
-   <a href="/">Home</a>
+   <a href="/mainpage">Home</a>
    <a href="/logout">로그아웃</a>
   <p id="show"></p>
   <form name="myinfo" id="myinfo"  action="/Update" method="POST" >

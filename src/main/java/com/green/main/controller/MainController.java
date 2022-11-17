@@ -50,6 +50,7 @@ public class MainController {
 	@RequestMapping("/moim_name_check")
 	@ResponseBody
 	public int Moim_Name_Check(String moim_name) {
+		System.out.println("moim_name:" + moim_name);
 		boolean a = moim_name.trim() == "";
 		int mc = userService.Moim_Name_Check(moim_name);
 		// mc 는 DB에서 moim_name을 count한 값이다.
@@ -59,6 +60,8 @@ public class MainController {
 		  // 모임이름으로 사용할 수 없게 만듬
 		return mc;
 	}
+	
+
 	
 	@RequestMapping("/searchmoim")
 	public ModelAndView SearchMoim(String user_id) {
