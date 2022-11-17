@@ -35,4 +35,6 @@ public interface PdsDao {
 	int selectBoardIdx();
 
 	List<FilesVo>  selectImage (PdsVo pdsVo);
+	
+	PdsVo getPds2(HashMap<String, Object> map);
 }

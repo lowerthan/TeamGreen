@@ -73,8 +73,9 @@
 </head>
 <body>
   <div id="main">
-    <form  action="/Pds/Update" method="POST"
-           enctype="multipart/form-data" >
+  
+    <form  action="/Pds/Update" method="POST">
+
     <input  type="hidden"  name="board_idx" value="${ map.board_idx }" />
  <%--   <input  type="hidden"  name="menu_idx" value="${ map.menu_idx }" />
      <input type="hidden" name="nowpage"      value="${ map.nowpage }" />          
@@ -108,25 +109,6 @@
          </td>
        </tr> 
        
- <%--   <tr>
-         <td>파일</td>
-         <td  colspan="3" id="tdfile">
-           <c:forEach var="file" items="${ filesList }">
-             <div>
-                <a class="aDelete"  href="/deleteFile?file_num=${ file.file_num }&sfilename=${file.sfilename}" >X</a>
-                &nbsp;&nbsp;&nbsp; 
-                <a href="/Pds/download/external/${ file.sfilename }">
-                  ${ file.filename }
-                </a>
-             </div>
-           </c:forEach>
-           <hr />
-           <button id="btnAddFile">Add File</button>  
-                      
-         </td>
-       </tr> 
---%>   
-        
        <tr>
          <td  colspan="4">
            <input type="submit" value="수정" />

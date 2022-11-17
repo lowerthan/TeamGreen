@@ -128,7 +128,7 @@
    	   FROM       BOARD   B
    	  
        WHERE  
-         MENU_IDX = 1
+         MENU_IDX = #{menu_idx}
    	     ORDER BY   BOARD_REGDATE DESC
    
    </select>
@@ -151,9 +151,7 @@
    	              BNUM, LVL, STEP, NREF
    	   FROM       BOARD   B
    	   WHERE      1=1
-   	  <if test="menu_idx != 0 and menu_idx != ''">
         AND MENU_IDX = #{menu_idx}         
-      </if>
    	  ) T   	   
    	   WHERE 
    	      RNUM BETWEEN #{startnum} AND #{endnum}
@@ -272,34 +270,16 @@
   )
 	</insert>
 
+<!-- 조회수 증가 -->
+<update id="ReadCountUpdate">
+       UPDATE  BOARD
+        SET    READCOUNT = READCOUNT + 1     
+        WHERE  BOARD_IDX  = #{board_idx}        
+    </update>
 
 </mapper>
 
-<!-- 
-GET_FILENUM() 가능
-  ( SELECT NVL( MAX(FILE_NUM), 0)+1 FROM FILES ),  PK 위반 x
-  FILENUM_SEQ.NEXTVAL, PK 위반 X
 
-
- 시퀀스
-CREATE SEQUENCE FILENUM_SEQ;
-
-함수
-CREATE  OR REPLACE FUNCTION  GET_FILENUM
-RETURN 
-   NUMBER   AS NUM  NUMBER;
-BEGIN
-   SELECT     FILENUM_SEQ.NEXTVAL
-     INTO     NUM
-     FROM     DUAL;
-     RETURN   NUM;                                                             
-END;
-/
- 
-
-
-
- -->
 
 
 

@@ -23,9 +23,23 @@
       
       <!-- 자료실 pdsList -->   
      <table id="PdsList">
-       <caption><h2>자유게시판</h2></caption>
-       <button type="button" style="float: right" onclick="location.href='/';">　홈으로　</button>
-       <button type="button" style="float: right" onclick="location.href='http://localhost:8080/User/List';">　마이페이지　</button>
+     
+    <%-- 
+<script>
+a = "menu_idx";
+switch (a){
+case "1" : document.write("자유게시판");
+break;
+case
+}
+</script> 
+ --%> 
+
+ 	
+       <caption><h2>${ menu_idx }</h2></caption>
+       
+       <button type="button" style="float: right" onclick="location.href='//mainpage';">　홈으로　</button>
+       <button type="button" style="float: right" onclick="location.href='http://localhost:8080/Mypage?user_id=${ sessionScope.login.user_id }';">　마이페이지　</button>
        <!-- 새글 쓰기 -->
        <tr>
          <td class="right" colspan="6">
@@ -54,13 +68,13 @@
            <!-- 새글/답글 -->
            <c:choose> 
             <c:when test="${ pds.lvl eq 0 }">
-              <a href="/Pds/View?board_idx=${ pds.board_idx }&menu_idx=${ pds.menu_idx }">
+              <a href="/Pds/View?menu_idx=${ pds.menu_idx }&board_idx=${pds.board_idx}&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}">
               ${ pds.board_title }
               </a>
             </c:when>            
             <c:otherwise>
              <b style="display:inline-block;width:${pds.lvl*20}px"></b> 
-             <a href="/Pds/View?board_idx=${ pds.board_idx }&menu_idx=${ pds.menu_idx }&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}">
+             <a href="/Pds/View?menu_idx=${ pds.menu_idx }&board_idx=${pds.board_idx}&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}">
               [답글]  ${ pds.board_title }
              </a> 
             </c:otherwise>
@@ -81,38 +95,17 @@
      </table>
    
      
-     <!-- 페이징 리스트 -->
-     <%@include file="/WEB-INF/include/paging.jspf" %>
-  	<button type="button" style="float: right" onclick="location.href='/';">　홈으로　</button>
-    <button type="button" style="float: right" onclick="location.href='javascript:history.back()';">　이전으로　</button>
-  	<button type="button" style="float: right" onclick="location.href='/Pds/WriteForm'">　글쓰기　</button>
+  	<button type="button" style="float: right" onclick="location.href='/Pds/WriteForm?menu_idx=${ menu_idx }&bnum=0&lvl=0&step=0&nref=0&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}'">　글쓰기　</button>
   
   
-    <button onclick="myFunction2()">　가입　</button>
-	<script>
-	function myFunction2() {
-	  let text = "가입하시겠습니까?";
-	  if (confirm(text) == true) {
-		alert("가입되었습니다.")  
-	    location = "/"
-	  } <%-- else {
-		location = "http://localhost:8080/User/List/";
-	  } --%>
-	}
-	</script>
-  
-  
-    <button onclick="myFunction()">　탈퇴　</button>
-	<script>
-	function myFunction() {
-	  let text = "탈퇴하시겠습니까?";
-	  if (confirm(text) == true) {
-		alert("탈퇴되었습니다.")  
-	    location = "/"
-	  } 
-	}
-	</script>
 	
+	<script>
+console.log("${pagePdsVo}");
+</script>
+
+
+	 <!-- 페이징 리스트 -->
+	<%@include file="/WEB-INF/include/paging.jsp" %>
 	
   </div>
 </body>

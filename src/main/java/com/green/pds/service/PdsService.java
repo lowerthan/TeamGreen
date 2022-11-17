@@ -16,12 +16,14 @@ public interface PdsService {
 	List<PdsVo> getPdsList(HashMap<String, Object> map);
 
 	PdsVo getPds(HashMap<String, Object> map);
+	
+	PdsVo getPds2(HashMap<String, Object> map);
 
 	List<FilesVo> getFilesList(HashMap<String, Object> map);
 
 	void boardDelete(HashMap<String, Object> map);
 
-	void setUpdate(HashMap<String, Object> map, HttpServletRequest request);
+	void setUpdate(HashMap<String, Object> map);
 
 	void deleteUploadedFile(HashMap<String, Object> map);
 
@@ -32,5 +34,7 @@ public interface PdsService {
 	void ImageUpload(PdsVo pdsVo,String imageFileName);
 
 	List<FilesVo>  selectImage (PdsVo pdsVo);
+
+	void setWrite(HashMap<String, Object> map);
 	
 }

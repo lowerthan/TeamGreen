@@ -41,45 +41,52 @@ public class PdsController {
 	@Autowired
 	private  PdsService    pdsService;
 	
-	/*
-	@Autowired
-	private  PdsPagingService    PdsPagingService;
-	*/
-
-	// HOME.JSP
-	// <a href="/Pds/List?menu_id=MENU01&nowpage=1&pagecount=4&pagegrpnum=1">자료실</a> 
-	// 페이징 가능한 리스트로 수정
 
 	@RequestMapping("/album")
 	public String   list() {
 		return  "pds/album";
 	}
 
-   @RequestMapping("/board")
-   public String board(HashMap<String, Object> map, Model model) {
-	   
-      List<PdsVo> pdsList = pdsService.getPdsList(map);
-      model.addAttribute("pdsList", pdsList);	      
-      System.out.println("맵:" + map);
-      	      
-      return  "pds/list";
-   }
+//   @RequestMapping("/board")
+//   public String board(HashMap<String, Object> map, Model model) {
+//	   
+////      List<PdsPagingVo>  pdsPagingList =  pdsService.getPdsPagingList( map );
+//       List<PdsVo>      pdsList       = pdsService.getPdsList(map);
+////      int nowpage       =   Integer.parseInt( map.get("nowpage").toString() );
+////      int pagegrpnum    =   Integer.parseInt( map.get("pagegrpnum").toString() );
+//      
+////      int nowpage       =   Integer.parseInt(String.valueOf(map.get("nowpage")));
+////	  int pagegrpnum    =   Integer.parseInt(String.valueOf(map.get("pagegrpnum")));
+//      
+//      System.out.println("맵1:" + map);
+//      
+////      model.addAttribute("pdsList", pdsPagingList);
+//      model.addAttribute("pdsList", pdsList);
+////      model.addAttribute("nowpage", nowpage);
+////      model.addAttribute("pagegrpnum", pagegrpnum);
+//
+//      System.out.println("맵2:" + map);
+// //     map.put("nowpage", nowpage);
+// //     map.put("pagegrpnum", pagegrpnum);
+//      
+//      return  "pds/list";
+//   }
 	
-	@RequestMapping("/WriteForm")
-	public String   WriteForm() {
-		
-		  return  "pds/write";
-	}
-
+	
 
 	@RequestMapping("/List")
-	public  ModelAndView   list(
-			@RequestParam HashMap<String, Object>	map) {
+	public  String   list(@RequestParam HashMap<String, Object> map, Model mv) {
 		
+		System.out.println("요기야");
 		// 게시물 목록
-		List <PdsVo> pdsList  =  pdsService.getPdsList(map);
+	List <PdsVo> pdsList  =  pdsService.getPdsList(map);
 		
+    mv.addAttribute("pdsList", pdsList);
 
+		//int menu_idx   =   (int) map.get("menu_idx");
+		System.out.println(map.get("menu_idx"));
+		
+		int menu_idx   =   Integer.parseInt(String.valueOf(map.get("menu_idx")));
 		int nowpage    =   Integer.parseInt( map.get("nowpage").toString() );
 		int pagecount  =   Integer.parseInt( map.get("pagecount").toString() ); 
 		int startnum   =   ( nowpage - 1  ) * pagecount + 1;
@@ -87,89 +94,101 @@ public class PdsController {
 	    
 	    map.put("startnum",   startnum);
 		map.put("endnum",     endnum);
-				
-		List<PdsPagingVo>  pdsPagingList =  pdsService.getPdsPagingList( map );
 		
-		// 조회후  pdsService.getPdsList( map ) 명령 실행후 
-		// map("pagePdsVo") 에 돌아온 결과 처리
+System.out.println("맵찍어보자:" + map);
+		
+	List<PdsPagingVo>  pdsPagingList =  pdsService.getPdsPagingList( map );
+	
+System.out.println("pdsPagingList:" + pdsPagingList);
+		
 		PdsPagingVo        pagePdsVo  = (PdsPagingVo) map.get("pagePdsVo");
 		
-		
-		ModelAndView  mv  =  new ModelAndView();
-//	    mv.addObject("menuList",   menuList);
-		mv.addObject("pdsList",    pdsPagingList);
-		mv.addObject("pagePdsVo",  pagePdsVo );
- //       mv.addObject("menu_idx",   menu_idx);
-			
-		mv.addObject("map",        map);
-	//	mv.addObject("page",       page);
-		mv.setViewName("pds/list");	
-		return   mv;		
+		mv.addAttribute("pdsList",    pdsPagingList);
+//		mv.addAttribute("찐pdsList",    pdsList);
+//				mv.addAttribute("pdsPagingList",    pdsPagingList);
+//				mv.addAttribute("pdsList",    pdsList);
+		mv.addAttribute("pagePdsVo",  pagePdsVo );
+        mv.addAttribute("menu_idx",   menu_idx);
+        mv.addAttribute("map",   map);
+        
+System.out.println("1:" + pdsPagingList);
+System.out.println("2:" + pdsList);
+        
+		mv.addAttribute("pagePdsVo",  pagePdsVo);
+System.out.println("mv:" + mv);
+		return   "pds/list";		
 	}
 	
-
-	@PostMapping("/Write")
-	public  String  write(PdsVo pdsVo ) {
-		System.out.println("pdsVo:"+pdsVo);
-
-		pdsService.pdsInsert ( pdsVo );
-		return  "redirect:/Pds/board";} 
 	
+	@RequestMapping("/WriteForm")
+	   public  ModelAndView   writeForm(
+	         @RequestParam HashMap<String, Object> map   ) {
+	         
+System.out.println("writeForm() map:" + map);
+	         
+
+
+	         ModelAndView  mv  =  new ModelAndView();
+	         mv.addObject("map", map);
+	         mv.setViewName("pds/write");  
+	         
+System.out.println("writeform내:" + map);	         
+	         return        mv;
+	      }
+	   
+	   
 	
-//원래	String   menu_id  =  (String) map.get("menu_id");
-		
-		// 새글저장       : Board  Table  - 게시글 저장         - Dao		
-		// 파일 정보저장  : Files  Table  - 첨부파일 이름저장   - Dao
-		// 실제 파일 저장 : c:\\upload    - 첨부파일 자체 저장 		
-//원래		pdsService.setWrite(map, request);
-				
-//원래이거		int  nowpage = Integer.parseInt( 
-//				(String) map.get("nowpage")); 
-//		int  pagecount = Integer.parseInt(
-//				(String) map.get("pagecount")); 
-//		int  pagegrpnum = Integer.parseInt( 
-//				(String) map.get("pagegrpnum")); 
-//		String fmt = "redirect:/Pds/List?menu_id=%s";
-//		fmt       += "&nowpage=%d";
-//		fmt       += "&pagecount=%d";
-//		fmt       += "&pagegrpnum=%d";
-//		String loc = String.format(fmt, 
-//			  menu_id, nowpage, pagecount, pagegrpnum);	
-//		ModelAndView  mv = new ModelAndView();		
-//		mv.addObject("map",  map);
-//		mv.setViewName( loc );
-//		return  mv;
+	   @RequestMapping("/Write")
+	   public  ModelAndView  write(
+	      @RequestParam  HashMap<String, Object> map) {
+	      
+	      int menu_idx   =   Integer.parseInt(String.valueOf(map.get("menu_idx")));
+	      
+	      pdsService.setWrite(map);
+	            
+	      int  nowpage = Integer.parseInt((String) map.get("nowpage")); 
+	      int  pagecount = Integer.parseInt((String) map.get("pagecount")); 
+	      int  pagegrpnum = Integer.parseInt((String) map.get("pagegrpnum")); 
+	     
+	      String fmt = "redirect:/Pds/List?menu_idx=%d";
+	      fmt       += "&nowpage=%d";
+	      fmt       += "&pagecount=%d";
+	      fmt       += "&pagegrpnum=%d";
+	      
+	      String loc = String.format(fmt, 
+	           menu_idx, nowpage, pagecount, pagegrpnum);   
+	      
+System.out.println(loc);
+	      
+	      ModelAndView  mv = new ModelAndView();      
+	      mv.addObject("map",  map);
+	      mv.setViewName( loc );
+	      return  mv;
+	   }
 	
 
+	   
 	@RequestMapping("/View")
 	public  ModelAndView   view(@RequestParam HashMap<String, Object> map) {
 
-		System.out.println("Pds/View map:" + map);
+System.out.println("Pds/View map:" + map);
 		
-		// 메뉴목록
-		//List<MenuVo>   menuList = menuService.getMenuList();
-		System.out.println("TTTTTTTT");
+System.out.println("TTTTTTTT");
 		// idx 로 조회된 글 정보
 		PdsVo          pdsVo    = pdsService.getPds( map );
-		System.out.println("제목:" + pdsVo.getBoard_title());
-		System.out.println("내용:" + pdsVo.getBoard_cont());
-		// idx 로 조회된 글 연결된 파일 목록 filesList
 		
-		List<FilesVo>  filesList =  pdsService.getFilesList( map );
-		//System.out.println("Pds Controller pdsFilesList:" +  filesList);
 		
 		int  menu_idx = Integer.parseInt((String) map.get("menu_idx"));
-		System.out.println("222222222222");		
+System.out.println("222222222222");		
 		PdsPagingVo pdspagingVo = new PdsPagingVo();
 		
 		ModelAndView  mv  =  new ModelAndView();
 		//mv.addObject("menuList",   menuList );
 		mv.addObject("pdsVo",      pdsVo );
-		mv.addObject("filesList",  filesList );
 		mv.addObject("menu_idx",   menu_idx );
 		mv.addObject("PdsPagingVo", pdspagingVo);
+		System.out.println(pdsVo);
 
-				
 		mv.addObject("map", map );		
 		mv.setViewName( "pds/view" );
 		return  mv;
@@ -189,7 +208,7 @@ public class PdsController {
 	      
 	      ModelAndView  mv  =  new ModelAndView();
 	      
-	      String fmt  = "redirect:/";
+	      String fmt  = "redirect:/mainpage";
 	        
 	      String loc = String.format(fmt);      
 	      mv.setViewName( loc );
@@ -228,13 +247,12 @@ public class PdsController {
 	// /Pds/Update
 	@RequestMapping("/Update")
 	public   ModelAndView   update(
-		@RequestParam  HashMap<String, Object> map,
-		HttpServletRequest request ) {
+		@RequestParam  HashMap<String, Object> map ) {
 		
 		System.out.println("PDsController update() map:" + map);
 		
 		//    수정 (idx, tite, cont, menu_id, file 정보) 
-		pdsService.setUpdate(  map, request  );
+		pdsService.setUpdate(  map  );
 		
 //		int      menu_idx = (int) map.get("menu_idx");
 		//int  	 menu_idx = Integer.parseInt((String) map.get("menu_idx"));
@@ -250,7 +268,7 @@ public class PdsController {
 		// 이동		
 		ModelAndView  mv  =  new  ModelAndView();
 //		String fmt  = "redirect:/Pds/List";
-		mv.setViewName("redirect:/") ;
+		mv.setViewName("redirect:/mainpage") ;
 /*		fmt        += "?menu_idx=%d";
 		fmt        += "&nowpage=%d";
 		fmt        += "&pagecount=%d";
@@ -297,11 +315,10 @@ public class PdsController {
 
 		UUID uuid = UUID.randomUUID();
 		String imageFileName = uuid+"_"+pdsVo.getFile().getOriginalFilename();
-		System.out.println("파일명 : "+imageFileName);
+		//System.out.println("파일명 : "+imageFileName);
 
-	    //String uploadFolder ="D:\\ws\\spring\\TeamGreen\\bin\\main\\webapp\\WEB-INF\\resources\\imgup\\";
-	    String uploadFolder ="D:\\ws\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamGreen\\WEB-INF\\resources\\imgup\\";
-	    
+	 // String uploadFolder ="C://YD/moim_db/src/main/webapp/WEB-INF/resources/imgup/";
+	    String uploadFolder ="D:\\ws\\spring\\moim_db2\\src\\main\\webapp\\WEB-INF\\resources\\imgup2\\";
 
 
 		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
