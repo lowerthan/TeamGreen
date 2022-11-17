@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.green.moim.dao.MoimDao;
 import com.green.moim.service.MoimService;
 import com.green.moim.vo.MoimVo;
+import com.green.user.vo.UserVo;
 
 
 @Service("moimService")
@@ -45,6 +46,12 @@ public class MoimServiceImpl implements MoimService {
 	public List<MoimVo> search_moim_name(String search_moim_name) {
 		List<MoimVo> moimVoList = moimDao.search_moim_name(search_moim_name);
 		return moimVoList;
+	}
+
+	@Override
+	public List<MoimVo> getRecommend(UserVo userVo) {
+		List<MoimVo> moimList = moimDao.getRecommend(userVo);
+		return moimList;
 	}
 
 

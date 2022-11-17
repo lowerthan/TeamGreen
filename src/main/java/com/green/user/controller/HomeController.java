@@ -47,16 +47,20 @@ public class HomeController {
 		String returnURL = "";
 		
 		if( session.getAttribute("login") != null ) {		// 기존 login 이란 session 에 값이 존재한다면
-			List<MoimVo> moimList = moimService.getMoimList();  // home화면의 모임리스트 
-			model.addAttribute("moimList", moimList);			// 홈화면의 c:forEach문의 아이템 moimList
-			System.out.println(moimList);
+			
+			//System.out.println("로그인세션:" + session.getAttribute("login"));
+			UserVo userVo = (UserVo) session.getAttribute("login");
+			//System.out.println("로그인세션아이디:" + userVo.getUser_id());
+
+			List<MoimVo> moimList = moimService.getRecommend(userVo);  // home화면의 추천모임리스트 
+			System.out.println("moimList:" + moimList);
+			model.addAttribute("moimList", moimList);		// 홈화면의 c:forEach문의 아이템 moimList
+			//System.out.println(moimList);
 			return "home";  								
 		}
 		return "home";										//WEB-INF/views/user/home.jsp
 	}
 
-	
-	
 	// 로그인
 	// 현재 로그아웃시&"/signUpProcess" == signUpForm.jsp에서 가입하기 버튼 클릭
 	@RequestMapping("/login")								
@@ -73,7 +77,6 @@ public class HomeController {
 		if( session.getAttribute("login") != null ) {		// 기존 login 이란 session 에 값이 존재한다면
 			session.removeAttribute("login");  				// 기존값을 제거한다
 		}
-		
 		// 로그인을 성공하면 UserVo 객체를 반환
 		UserVo  vo  = userService.login( map );
 		if ( vo != null ) {
@@ -84,7 +87,6 @@ public class HomeController {
 		}
 		return returnURL;		
 	}
-	
 	// 로그아웃("/logout") home 화면의 로그아웃 클릭
 	@RequestMapping("/logout") 
 	public  String  logout(HttpSession session) {
@@ -137,14 +139,14 @@ public class HomeController {
 		List<MoimuserVo> usermoimslist = moimuserService.getUserMoims(user_id); // 내모임리스트 가져오기
 		model.addAttribute("usermoimslist", usermoimslist );
 
-		return "user/mypage";								//WEB-INF/views/user/mypage.jsp
+		return "user/mypage";							//WEB-INF/views/user/mypage.jsp
 	}
 	
 	
 	// 대학교검색 signUpForm.jsp 대학교검색 / mypage.jsp 대학교 정보수정의 검색
 	@RequestMapping("/univSearch")
 	public  String  univSearch() {
-		return "user/univSearch";							//WEB-INF/views/user/univSearch.jsp
+		return "user/univSearch";						//WEB-INF/views/user/univSearch.jsp
 	}	
 	
 	// 수정하기 mypage.jsp에서 수정하기 버튼 클릭

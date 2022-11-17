@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.green.moim.dao.MoimDao;
 import com.green.moim.vo.MoimVo;
+import com.green.user.vo.UserVo;
 
 @Repository("moimDao")
 public class MoimDaoImpl implements MoimDao {
@@ -18,6 +19,7 @@ public class MoimDaoImpl implements MoimDao {
 	@Override
 	public void inputMoim(MoimVo moimVo) {
 		sqlSession.insert("Moim.inputMoim",moimVo);
+		sqlSession.insert("Moim.inputMoimuser",moimVo);		
 			
 		}
 
@@ -44,7 +46,15 @@ public class MoimDaoImpl implements MoimDao {
 		List<MoimVo> moimVoList = sqlSession.selectList("Moim.Search_moim_name",search_moim_name);
 		return moimVoList;
 	}
-	
+
+	@Override
+	public List<MoimVo> getRecommend(UserVo userVo) {
+		
+		System.out.println("다오까지옴 userVo:" + userVo);
+		List<MoimVo> moimList = sqlSession.selectList("Moim.getRecommend", userVo);
+		System.out.println("다오에서감 moimList:" + moimList);
+		return moimList;
+	}
 }
 
 	

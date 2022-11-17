@@ -49,11 +49,10 @@ public class MainController {
 		System.out.println("uploadFile = " + uploadFile);
 		String moim_name = moimVo.getMoim_name();
 		String moim_Thumbnail_name = moim_name+"_"+"thumbnail";
-		
-		
+			
 		ModelAndView mv = new ModelAndView();
 		moimService.inputMoim(moimVo);							//테이블에 개설한 모임내용(moimVo)을 추가
-		System.out.println(moimVo);
+
 		
 		for(MultipartFile multipartFile : uploadFile) {
 			System.out.println("------------------");
