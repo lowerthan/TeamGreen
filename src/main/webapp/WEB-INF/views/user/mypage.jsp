@@ -30,7 +30,7 @@
 </script>
 </head>
 <body>
-   <a href="/">Home</a>
+   <a href="/mainpage">Home</a>
    <a href="/logout">로그아웃</a>
   <p id="show"></p>
   <form name="myinfo" id="myinfo"  action="/Update" method="POST" >
