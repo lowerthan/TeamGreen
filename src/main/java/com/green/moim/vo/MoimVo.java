@@ -9,12 +9,12 @@ public class MoimVo {
 	private String user_id;
 	private String moim_intro;
 	private String user_name;
+	private String user_cate;
 	
 	//Constructors
 	public MoimVo() {}
 	public MoimVo(String moim_idx, String moim_name, String univname, String moim_cate, String user_id,
-			String moim_intro, String user_name) {
-		super();
+			String moim_intro, String user_name, String user_cate) {
 		this.moim_idx = moim_idx;
 		this.moim_name = moim_name;
 		this.univname = univname;
@@ -22,9 +22,10 @@ public class MoimVo {
 		this.user_id = user_id;
 		this.moim_intro = moim_intro;
 		this.user_name = user_name;
+		this.user_cate = user_cate;
 	}
 	
-	//Getter/Setter
+	//Getter / Setter
 	public String getMoim_idx() {
 		return moim_idx;
 	}
@@ -67,12 +68,19 @@ public class MoimVo {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	//toString
+	public String getUser_cate() {
+		return user_cate;
+	}
+	public void setUser_cate(String user_cate) {
+		this.user_cate = user_cate;
+	}
 	@Override
 	public String toString() {
 		return "MoimVo [moim_idx=" + moim_idx + ", moim_name=" + moim_name + ", univname=" + univname + ", moim_cate="
-				+ moim_cate + ", user_id=" + user_id + ", moim_intro=" + moim_intro + ", user_name=" + user_name + "]";
+				+ moim_cate + ", user_id=" + user_id + ", moim_intro=" + moim_intro + ", user_name=" + user_name
+				+ ", user_cate=" + user_cate + "]";
 	}
+	
 	
 
 	

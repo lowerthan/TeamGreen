@@ -43,7 +43,7 @@ public class MainController {
 
 		ModelAndView mv = new ModelAndView();
 		moimService.inputMoim(moimVo);							//테이블에 개설한 모임내용(moimVo)을 추가
-		mv.setViewName("redirect:/");							// home.jsp 리다이렉트
+		mv.setViewName("redirect:/mainpage");							// home.jsp 리다이렉트
 		return mv;
 	}
 	
