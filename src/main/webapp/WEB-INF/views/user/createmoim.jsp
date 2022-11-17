@@ -106,7 +106,7 @@ $(function() {
 <body>
 
 <div id="main">
-	<form action="/Main/Inputmoim" method="POST" id="inputmoim">
+	<form action="/Main/Inputmoim" method="POST" id="inputmoim" enctype="multipart/form-data">
    <h2>모임개설 테스트</h2>
     <table>
      <ul>
@@ -119,7 +119,7 @@ $(function() {
      	<li><span id="moim_name_check"></span></li><br>
      	<li>관심사 선택: <select name="moim_cate"><br>
      		<option value="">모임 관심사 선택</option>
-     		<option value="스포츠/운동">스포츠/ 운동</option>
+     		<option value="스포츠/운동">스포츠 / 운동</option>
      		<option value="문화/공연">문화 / 공연</option>
      		<option value="게임/오락">게임 / 오락</option>
      		<option value="사교/인맥">사교 / 인맥</option>
@@ -129,6 +129,7 @@ $(function() {
      		<option value="반려동물">반려동물</option>
      	</select><li>
      	<li>모임 간단설명<input type="text" name="moim_intro" /><li><br>
+     	<input type="file" name="uploadFile" id="uploadFile" accept="image/*" />
      </ul>
     </table>
      	<button type="submit" form="inputmoim">모임개설하기</button>
