@@ -84,6 +84,12 @@
               AND   moim_idx = #{moim_idx}
     </update>
     
+    <select id="user_id_check" resultType="int">
+   		SELECT  COUNT(user_id)
+		FROM    muser
+		WHERE   user_id = #{user_id}
+   </select>
+    
     
 	
 	<!-- 아래 2개는 내가 담당한 부분 -->
