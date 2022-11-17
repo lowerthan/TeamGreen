@@ -67,6 +67,13 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public int user_id_check(String user_id) {
+		
+		int cnt = userDao.user_id_check(user_id);
+		return cnt;
+	}
+
 
 
 

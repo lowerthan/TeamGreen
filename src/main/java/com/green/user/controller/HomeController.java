@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.moim.service.MoimService;
@@ -113,6 +114,21 @@ public class HomeController {
 	}
 
 	// 회원가입 中 아이디 중복체크
+	@RequestMapping("/user_id_check")
+	@ResponseBody
+	public int user_id_check(String user_id) {
+		System.out.println("user_id:" + user_id);
+		boolean a = user_id.trim() == "";
+		
+		int cnt = userService.user_id_check(user_id);
+		System.out.println("cnt:" + cnt);
+
+		if(a == true) {
+			cnt = 1;
+		} // moim_name 이 공백일 경우 mc를 1 증가시켜 
+		  // 모임이름으로 사용할 수 없게 만듬
+		return cnt;
+	}
 	
 	// 마이페이지 home.jsp의 상단 메뉴바의 mypage_icon 클릭
 	@GetMapping("/Mypage")
