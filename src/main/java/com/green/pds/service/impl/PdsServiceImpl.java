@@ -3,6 +3,7 @@ package com.green.pds.service.impl;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.green.pds.dao.PdsDao;
 import com.green.pds.service.PdsService;
+import com.green.pds.vo.CommentsVo;
 import com.green.pds.vo.FilesVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.pds.vo.PdsVo;
@@ -216,6 +218,23 @@ public class PdsServiceImpl implements PdsService {
 		
 		pdsDao.setWrite( map );
 
+	}
+	@Override
+	public List<CommentsVo> getCommentsList(int board_idx) {
+		List<CommentsVo> CommentsList = pdsDao.getCommentsList(board_idx);
+		return CommentsList;
+	}
+
+	@Override
+	public void InputComments(Map<String, Object> map) {
+		pdsDao.InputComments(map);
+		
+	}
+
+	@Override
+	public List<PdsVo> getHiBoardList(String moim_idx) {
+		List<PdsVo> pdsVo = pdsDao.getHiBoardList(moim_idx);
+		return pdsVo;
 	}
 }
 

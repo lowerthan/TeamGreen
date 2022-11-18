@@ -18,9 +18,9 @@ public interface UserService {
 	// 진성이 담당한 부분
 	UserVo getUserInfo(String user_id);
 
-	
 	int Moim_Name_Check(String moim_name);
 	
+	void input_hi_board(Map<String, Object> map2);
 	
 	
 	// 현태행님 담당한 부분

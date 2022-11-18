@@ -169,6 +169,11 @@ public class HomeController {
 		userService.inputMoimUser(map); // MoimUser 테이블에 추가
 		
 		//가입인사게시판 등록 구현필요
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("user_id", user_id);
+		map2.put("moim_idx", moim_idx);
+		map2.put("sign_up_intro", sign_up_intro);
+		userService.input_hi_board(map2);
 		
 		//가입한 모임화면으로 다시 이동
 		mv.setViewName("redirect:/Moim/moimpage?moim_idx=" + moim_idx);

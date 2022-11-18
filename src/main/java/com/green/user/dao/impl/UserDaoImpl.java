@@ -52,6 +52,12 @@ public class UserDaoImpl implements UserDao {
 		int mc = sqlSession.selectOne( "User.moim_name_check", moim_name );
 		return mc;
 	}
+	@Override
+	public void input_hi_board(Map<String, Object> map2) {
+		sqlSession.insert("User.input_hi_board", map2);
+		
+	}
+
 	
 	
 	

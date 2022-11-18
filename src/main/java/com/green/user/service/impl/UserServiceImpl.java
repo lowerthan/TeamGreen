@@ -44,6 +44,13 @@ public class UserServiceImpl implements UserService {
 		return mc;
 	}
 	
+	@Override
+	public void input_hi_board(Map<String, Object> map2) {
+		userDao.input_hi_board(map2);
+		
+	}
+
+	
 	
 	
 	

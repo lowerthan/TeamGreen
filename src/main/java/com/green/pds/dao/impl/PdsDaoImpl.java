@@ -2,12 +2,14 @@ package com.green.pds.dao.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.green.pds.dao.PdsDao;
+import com.green.pds.vo.CommentsVo;
 import com.green.pds.vo.FilesVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.pds.vo.PdsVo;
@@ -160,6 +162,24 @@ public class PdsDaoImpl implements PdsDao {
 	public PdsVo getPds2(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public List<CommentsVo> getCommentsList(int board_idx) {
+		List<CommentsVo> CommentsList = sqlSession.selectList("Pds.getCommentsList", board_idx);
+		return CommentsList;
+	}
+
+	@Override
+	public void InputComments(Map<String, Object> map) {
+		sqlSession.insert("Pds.inputComments", map);
+		
+	}
+
+	@Override
+	public List<PdsVo> getHiBoardList(String moim_idx) {
+		List<PdsVo> pdsVo = sqlSession.selectList("Pds.getHiBoardList", moim_idx);
+		return pdsVo;
 	}
 }
 

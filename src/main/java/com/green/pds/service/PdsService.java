@@ -2,9 +2,11 @@ package com.green.pds.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.green.pds.vo.CommentsVo;
 import com.green.pds.vo.FilesVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.pds.vo.PdsVo;
@@ -36,5 +38,11 @@ public interface PdsService {
 	List<FilesVo>  selectImage (PdsVo pdsVo);
 
 	void setWrite(HashMap<String, Object> map);
+	
+	List<CommentsVo> getCommentsList(int board_idx);
+
+	void InputComments(Map<String, Object> map);
+
+	List<PdsVo> getHiBoardList(String moim_idx);
 	
 }
