@@ -9,6 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         
+        <!-- 진짜 짜증남 -->
         <title>메인 화면</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
