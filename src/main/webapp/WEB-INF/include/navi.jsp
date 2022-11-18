@@ -15,10 +15,10 @@
                           </c:when>
                           <c:otherwise>
                              <li class="nav-item"><a class="nav-link active" aria-current="page" href="/logout2">로그아웃</a></li>
+                        	 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Mypage?user_id=${ sessionScope.login.user_id }">마이 페이지</a></li>
+                       		 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Main/Createmoim?user_id=${ sessionScope.login.user_id }">모임 개설</a></li>
                           </c:otherwise>
                         </c:choose>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Mypage?user_id=${ sessionScope.login.user_id }">마이 페이지</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Main/Createmoim?user_id=${ sessionScope.login.user_id }">모임 개설</a></li>
                         
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/Main/searchmoim">모임 검색</a></li>
                         
