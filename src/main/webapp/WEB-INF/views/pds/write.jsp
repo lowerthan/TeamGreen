@@ -4,24 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>글쓰기</title>
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-<link rel="stylesheet" href="/css/common.css" />
+<link href="/css/common.css" rel="stylesheet" />
 <style>
-   #pdsWriteTable  td:first-child { wdith:150px; text-align: center; }
+   #pdsWriteTable  td:first-child { wdith:150px; text-align: center; } 
    #pdsWriteTable  td:last-child  { text-align: left; }
    
    input[type=text]  { width:100%; }
-   textarea          { width:100%;  height: 300px;   }
+   textarea          { width:100%;  height: 300px; }
 </style>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
-  
 </script>
 </head>
 <body>
+ 
   <div id="main">
     
     <!-- 새글 쓰기 자료실 -->
