@@ -12,9 +12,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +22,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.pds.service.PdsService;
+import com.green.pds.vo.CommentsVo;
 import com.green.pds.vo.FilesVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.pds.vo.PdsVo;
@@ -171,22 +171,28 @@ System.out.println(loc);
 	@RequestMapping("/View")
 	public  ModelAndView   view(@RequestParam HashMap<String, Object> map) {
 
-System.out.println("Pds/View map:" + map);
+		System.out.println("Pds/View map:" + map);
 		
-System.out.println("TTTTTTTT");
+		System.out.println("TTTTTTTT");
 		// idx 로 조회된 글 정보
 		PdsVo          pdsVo    = pdsService.getPds( map );
 		
 		
 		int  menu_idx = Integer.parseInt((String) map.get("menu_idx"));
-System.out.println("222222222222");		
+		System.out.println("222222222222");		
 		PdsPagingVo pdspagingVo = new PdsPagingVo();
+		
+		// 댓글 리스트 불러오기
+		int board_idx = pdsVo.getBoard_idx();
+		List<CommentsVo> CommentsList = pdsService.getCommentsList(board_idx);
+		System.out.println(CommentsList);
 		
 		ModelAndView  mv  =  new ModelAndView();
 		//mv.addObject("menuList",   menuList );
 		mv.addObject("pdsVo",      pdsVo );
 		mv.addObject("menu_idx",   menu_idx );
 		mv.addObject("PdsPagingVo", pdspagingVo);
+		mv.addObject("CommentsList", CommentsList);
 		System.out.println(pdsVo);
 
 		mv.addObject("map", map );		
@@ -391,6 +397,28 @@ System.out.println("222222222222");
 		
 		
 		}
+	// 댓글 넣기
+	@RequestMapping("/inputcomment")
+	public String InputComments(String comment,
+			int board_idx, int menu_idx, String user_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_id", user_id);
+		map.put("comment", comment);
+		map.put("board_idx", board_idx);
+		pdsService.InputComments(map);
+		
+		return "redirect:/Pds/View?board_idx="+board_idx+"&menu_idx="+menu_idx;
+	}
+	// 인사게시판으로 이동
+	@RequestMapping("/hi") // 모임화면 이동
+	public ModelAndView moimpage(String moim_idx) {
+		ModelAndView mv = new ModelAndView();
+		List<PdsVo> pdsVo = pdsService.getHiBoardList(moim_idx);
+		System.out.println(pdsVo);
+		mv.addObject("pdsVo",pdsVo);
+		mv.setViewName("pds/hi");
+		return  mv;
+	}
 
 	}
 	

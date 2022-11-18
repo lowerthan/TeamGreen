@@ -276,6 +276,31 @@
         SET    READCOUNT = READCOUNT + 1     
         WHERE  BOARD_IDX  = #{board_idx}        
     </update>
+    
+    <select id="getCommentsList"
+		resultType="com.green.pds.vo.CommentsVo">
+		SELECT	USER_ID, REGDATE, CONT, BOARD_IDX
+		FROM	COMMENTS
+		WHERE	BOARD_IDX = #{board_idx}
+	</select>
+	
+	<insert id="inputComments" 
+		parameterType="HashMap">
+		INSERT INTO COMMENTS (USER_ID, CONT, BOARD_IDX)
+    	VALUES (#{user_id}, #{comment}, #{board_idx})
+		
+		
+		</insert>
+		
+	<select id="getHiBoardList"
+		resultType="com.green.pds.vo.PdsVo">
+		SELECT	USER_ID, MENU_IDX, MOIM_IDX, BOARD_CONT
+		FROM	BOARD
+		WHERE	MOIM_IDX = #{moim_idx}
+		AND		MENU_IDX = 4
+		
+		</select>
+    
 
 </mapper>
 

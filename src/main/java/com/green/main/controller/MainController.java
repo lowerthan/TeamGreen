@@ -21,7 +21,7 @@ import com.green.user.vo.UserVo;
 @RequestMapping("/Main") 
 public class MainController {
 	// 절대경로라서 새로 프로젝트 받으면 수정 요
-	String uploadFolder = "D:\\ws\\spring\\TeamGreentry\\src\\main\\webapp\\WEB-INF\\resources\\img";
+	String uploadFolder = "C:\\Users\\GGG\\git\\TeamGreen1\\src\\main\\webapp\\WEB-INF\\resources\\img";
 	
 	@Autowired
 	private UserService userService;

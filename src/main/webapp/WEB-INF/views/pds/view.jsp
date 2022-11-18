@@ -82,7 +82,22 @@
          <button type="button"  onclick="location.href='javascript:history.back()';">　이전으로　</button>
          <button type="button"  onclick="location.href='/';">　홈으로　</button> 
 	     </td>     
-       </tr> 
+       </tr><br>
+       
+       <c:forEach var="commentslist" items="${CommentsList}" varStatus="status">
+       	 <tr>
+			<td>${ status.count }</td>
+			<td>유저 아이디: ${ CommentsList[status.index].user_id }</td><br>
+			<td>댓글내용: ${ CommentsList[status.index].cont }</td><br>
+		</tr>
+       </c:forEach>
+   	  <form action="/Pds/inputcomment" method="post" id="inputcomment">
+   	  <input type="hidden" name="board_idx" value="${pdsVo.board_idx}">
+   	  <input type="hidden" name="menu_idx" value="${menu_idx}">
+   	  <input type="text" name="comment" value="" />
+   	  <input type="text" name="user_id" value="${ sessionScope.login.user_id }" readonly />
+   	  <button type="submit" form="inputcomment">댓글 달기</button>
+   	  </form>
        
    	  
    </div> 

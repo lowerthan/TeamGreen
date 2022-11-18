@@ -40,6 +40,18 @@
 		FROM    MOIM
 		WHERE   MOIM_NAME = #{moim_name}
    </select>
+   
+   <insert id="input_hi_board"
+   		parameterType="HashMap">
+   		INSERT INTO BOARD(BOARD_IDX, USER_ID, MENU_IDX, BOARD_TITLE, MOIM_IDX, BOARD_CONT)
+    		VALUES((SELECT NVL(MAX(BOARD_IDX)+1,1) FROM BOARD),
+			    #{user_id},
+			    4,
+			    '가입인사',
+			    #{moim_idx},
+			    #{sign_up_intro}) 
+   	
+   </insert>
 	
 	
 	

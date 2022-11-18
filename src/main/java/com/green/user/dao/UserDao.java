@@ -21,7 +21,7 @@ public interface UserDao {
 	
 	int Moim_Name_Check(String moim_name);
 	
-	
+	void input_hi_board(Map<String, Object> map2);
 	
 	
 	

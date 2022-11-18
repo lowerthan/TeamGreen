@@ -2,7 +2,9 @@ package com.green.pds.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.green.pds.vo.CommentsVo;
 import com.green.pds.vo.FilesVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.pds.vo.PdsVo;
@@ -37,4 +39,10 @@ public interface PdsDao {
 	List<FilesVo>  selectImage (PdsVo pdsVo);
 	
 	PdsVo getPds2(HashMap<String, Object> map);
+	
+	List<CommentsVo> getCommentsList(int board_idx);
+
+	void InputComments(Map<String, Object> map);
+
+	List<PdsVo> getHiBoardList(String moim_idx);
 }

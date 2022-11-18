@@ -76,6 +76,7 @@ $(document).ready(function(){
 	<a href="/Pds/List?menu_idx=1&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">자유게시판</a><br>
 	<a href="/Pds/List?menu_idx=2&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">Q & A</a><br>
 	<a href="/Pds/1/Album" style="float: left">사진첩</a><br>   <%-- 중간 1 자리에 MOIM_IDX 가 들어가야함 !!! --%>
+	<a href="/Pds/hi?moim_idx=${moimVo.moim_idx}" style="float: left">가입인사_게시판</a>
 
 	<hr />
 
