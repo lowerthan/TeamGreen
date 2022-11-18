@@ -39,11 +39,16 @@ $(document).ready(function(){
 		data : obj,
 		success : function(chk){ // 가입자 -> 탈퇴출력, 미가입자 -> 가입출력
 			if(chk==0){
-				var plz =  '<button onclick="myFunction()">　가입　</button>';
-				$('#show').html( plz );
+				var showReg =  '<button onclick="myFunction()">　가입　</button>';
+				$('#showReg').html( showReg );
 			} else {
-				var plz =  '<button onclick="myFunction2()">　탈퇴　</button>';
-				$('#show').html( plz );
+				var boardView  = '<a href="/Pds/List?menu_idx=1&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">자유게시판</a><br>';
+				    boardView += '<a href="/Pds/1/Album" style="float: left">사진첩</a><br>';
+				    boardView += '<a href="/Pds/hi?moim_idx=${moimVo.moim_idx}" style="float: left">가입인사_게시판</a>';
+				var   showReg  =  '<button onclick="myFunction2()">　탈퇴　</button>';
+					 	
+				$('#boardView').html( boardView );
+				$('#showReg').html( showReg );
 			}
 		},
 		error : function() {
@@ -71,16 +76,21 @@ $(document).ready(function(){
 <%--  모임 화면 나오면 전부수정 !!!!!!!!!!!!!!!!--%>
 	<h1>${ moimVo.moim_name }</h1>
 	<h2>${ moimVo.moim_intro }</h2> 
+	<h3>모임장 : ${ moimVo.user_name }</h3>
+	<br>
 	<img class="NO-CACHE" name="thumbnail" src="/img/${moimVo.moim_name}_thumbnail.jpg" width="400" height="200" border="3">
-
-	<a href="/Pds/List?menu_idx=1&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">자유게시판</a><br>
+	
 	<a href="/Pds/List?menu_idx=2&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">Q & A</a><br>
+	<p id="boardView"></p>
+	<!-- 
+	<a href="/Pds/List?menu_idx=1&nowpage=1&pagecount=10&pagegrpnum=1"   style="float: left">자유게시판</a><br>
 	<a href="/Pds/1/Album" style="float: left">사진첩</a><br>   <%-- 중간 1 자리에 MOIM_IDX 가 들어가야함 !!! --%>
 	<a href="/Pds/hi?moim_idx=${moimVo.moim_idx}" style="float: left">가입인사_게시판</a>
-
+	 -->
+	 
 	<hr />
 
-	<p id="show"></p> <!-- 가입 or 탈퇴 버튼 출력 -->
+	<p id="showReg"></p> <!-- 가입 or 탈퇴 버튼 출력 -->
 	<script>
 	function myFunction() {
 	  let text = "가입하시겠습니까?";

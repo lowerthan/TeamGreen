@@ -240,8 +240,7 @@
                 </div>
 				<hr>
 
-				
-				<c:forEach var="moim" items="${ moimList }" >
+				<c:forEach var="moim" items="${ moimList }" begin="0" end="2" >
 					       <div class="col">
 	        				<div class="card mb-4 rounded-3 shadow-sm">
 	          				 <div class="card-header py-3">
@@ -257,6 +256,7 @@
 					        </div>
 					      </div>
 				</c:forEach>
+				
             </div>
         </section>
         <!-- Footer-->
