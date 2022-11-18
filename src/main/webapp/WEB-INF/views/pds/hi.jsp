@@ -6,9 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>가입인사게시판</title>
+<title>가입인사 게시판</title>
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/home.css" />
+<link rel="stylesheet" href="/css/list.css" />
+
+<!-- 
 <style>
   #PdsList  td:nth-of-type(1) { width:70px;  text-align: center; }   
   #PdsList  td:nth-of-type(2) { width:300px; text-align: left; }  
@@ -17,17 +20,19 @@
   #PdsList  td:nth-of-type(5) { width:100px; text-align: center; }  
   #PdsList  td:nth-of-type(6) { width:100px; text-align: center; }  
 </style>
+ -->
 </head>
 <body>
-  <div id="main">
-      
-      <!-- 자료실 pdsList -->   
-     <table id="PdsList">
-       <caption><h2>가입인사 게시판</h2></caption>
-       <button type="button" style="float: right" onclick="location.href='/';">　홈으로　</button>
-       <button type="button" style="float: right" onclick="location.href='http://localhost:8080/User/List';">　마이페이지　</button>
-       <!-- 새글 쓰기 -->
-       <tr>
+	<!-- 내비게이션 바 불러오기 -->
+    <%@include file="/WEB-INF/include/navi.jsp" %>
+
+	<section class="notice">
+	<div id="board-list">
+	    <div class="container">
+            <h2><b>가입인사 게시판</b></h2><br>
+	        <table class="board-table">
+		    
+		    <tr>
          <td class="right" colspan="6">
          
          </td>
@@ -52,6 +57,7 @@
      
      <!-- 페이징 리스트 -->
      <%@include file="/WEB-INF/include/paging.jsp" %>
+     
   	<button type="button" style="float: right" onclick="location.href='/';">　홈으로　</button>
     <button type="button" style="float: right" onclick="location.href='javascript:history.back()';">　이전으로　</button>
   	
@@ -81,9 +87,10 @@
 	  } 
 	}
 	</script>
-	
+	</div>
 	
   </div>
+  </section>
 </body>
 </html>
 
