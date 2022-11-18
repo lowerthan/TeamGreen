@@ -39,6 +39,7 @@ public class MainController {
 		mv.addObject("a", a);
 		mv.setViewName("/user/createmoim");						//WEB-INF/views/user/createmoim.jsp  경로수정필요해보임!!
 		
+		
 		return mv;
 	}
 	
@@ -52,7 +53,11 @@ public class MainController {
 			
 		ModelAndView mv = new ModelAndView();
 		moimService.inputMoim(moimVo);							//테이블에 개설한 모임내용(moimVo)을 추가
-
+		
+		// 모임유저 테이블에 모임장도 추가시키기
+		String moim_idx = moimVo.getMoim_idx();
+		String user_id = moimVo.getUser_id();
+		
 		
 		for(MultipartFile multipartFile : uploadFile) {
 			System.out.println("------------------");

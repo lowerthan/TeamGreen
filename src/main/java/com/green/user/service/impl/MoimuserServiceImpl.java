@@ -34,4 +34,10 @@ public class MoimuserServiceImpl implements MoimuserService {
 		moimuserDao.delete_moimuser(map);
 	}
 
+	@Override
+	public void delete_hi(HashMap<String, Object> map) {
+		moimuserDao.delete_hi(map);
+		
+	}
+
 }
