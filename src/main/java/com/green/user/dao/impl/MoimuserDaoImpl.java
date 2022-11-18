@@ -34,4 +34,10 @@ public class MoimuserDaoImpl implements MoimuserDao {
 		sqlSession.delete("User.delete_moimuser", map);
 	}
 
+	@Override
+	public void delete_hi(HashMap<String, Object> map) {
+		sqlSession.delete("User.delete_hi", map);
+		
+	}
+
 }

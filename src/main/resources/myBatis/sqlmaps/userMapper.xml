@@ -50,8 +50,18 @@
 			    '가입인사',
 			    #{moim_idx},
 			    #{sign_up_intro}) 
-   	
    </insert>
+   
+   <delete id="delete_hi"
+   		parameterType="HashMap">
+   		DELETE FROM   BOARD
+           WHERE    USER_ID  = #{user_id}
+           AND		MOIM_IDX = #{moim_idx}
+           AND 		MENU_IDX = 4
+           
+           
+   
+   </delete>
 	
 	
 	

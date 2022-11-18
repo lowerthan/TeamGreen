@@ -186,6 +186,7 @@ public class HomeController {
 		System.out.println("moim_idx:" + map.get("moim_idx"));
 		
 		moimuserService.delete_moimuser(map);
+		moimuserService.delete_hi(map);
 		
 		return "redirect:/Moim/moimpage?moim_idx=" + map.get("moim_idx");
 	}

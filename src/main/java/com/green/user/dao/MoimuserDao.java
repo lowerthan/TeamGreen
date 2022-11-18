@@ -13,4 +13,6 @@ public interface MoimuserDao {
 
 	void delete_moimuser(HashMap<String, Object> map);
 
+	void delete_hi(HashMap<String, Object> map);
+
 }
