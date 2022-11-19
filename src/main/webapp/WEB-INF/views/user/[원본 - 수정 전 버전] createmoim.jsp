@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
 <title>모임 개설 화면</title>
-
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-<link rel="stylesheet" href="/css/common.css"/>
-<link rel="stylesheet" href="/css/signUpForm.css" />
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+	<link rel="stylesheet" href="/css/common.css"/>
 <style> 
 	h2 { margin-top:30px; 
 		 margin-botton:30px;
@@ -110,38 +106,33 @@ $(function() {
 <body>
 
 <div id="main">
-	<form action="/Main/Inputmoim" class="joinForm" method="POST" id="inputmoim" enctype="multipart/form-data">
-   <h2>새로운 모임 만들기</h2>
+	<form action="/Main/Inputmoim" method="POST" id="inputmoim" enctype="multipart/form-data">
+   <h2>모임개설 테스트</h2>
     <table>
+     <ul>
      	<input type="hidden" name="univname" value="${a.univname }" />
      	<input type="hidden" name="user_id" value="${a.user_id }" />
-     	
-     	<div class="textForm">학교이름 : ${a.univname }</div>
-     	<div class="textForm">유저이름 : ${a.user_name }</div>
-     	<div class="textForm">모임이름 : <input type="text" name="moim_name" /></div></li>
-	     	<span id="moim_name_check"></span>
-     	<div class="textForm">
-     		관심사 선택: <select name="moim_cate">
-	     		<option value="">모임 관심사 선택</option>
-	     		<option value="스포츠/운동">스포츠 / 운동</option>
-	     		<option value="문화/공연">문화 / 공연</option>
-	     		<option value="게임/오락">게임 / 오락</option>
-	     		<option value="사교/인맥">사교 / 인맥</option>
-	     		<option value="댄스/음악">댄스 / 음악</option>
-	     		<option value="요리/맛집">요리 / 맛집</option>
-	     		<option value="여행/캠핑">여행 / 캠핑</option>
-	     		<option value="반려동물">반려동물</option>
-     		</select>
-     		</div>
-     	<div class="textForm">모임 간단설명 : 
-     		<input type="text" name="moim_intro" />
-   		</div>
-   		<div class="textForm">
-     		<input type="file" name="uploadFile" id="uploadFile" accept="image/*" /><br>
-     	</div>
+     	<li>학교이름: ${a.univname }</li><br>
+     	<li>유저이름: ${a.user_name }</li><br>
+     	<li>모임이름: <input type="text" name="moim_name" /></li>
+     		
+     	<li><span id="moim_name_check"></span></li><br>
+     	<li>관심사 선택: <select name="moim_cate"><br>
+     		<option value="">모임 관심사 선택</option>
+     		<option value="스포츠/운동">스포츠 / 운동</option>
+     		<option value="문화/공연">문화 / 공연</option>
+     		<option value="게임/오락">게임 / 오락</option>
+     		<option value="사교/인맥">사교 / 인맥</option>
+     		<option value="댄스/음악">댄스 / 음악</option>
+     		<option value="요리/맛집">요리 / 맛집</option>
+     		<option value="여행/캠핑">여행 / 캠핑</option>
+     		<option value="반려동물">반려동물</option>
+     	</select><li>
+     	<li>모임 간단설명<input type="text" name="moim_intro" /><li><br>
+     	<input type="file" name="uploadFile" id="uploadFile" accept="image/*" />
+     </ul>
     </table>
-     	<button type="submit"  class="btn1" form="inputmoim">모임 개설하기</button>
-     	<button type="reset"  class="btn2" >내용 지우기</button>
+     	<button type="submit" form="inputmoim">모임개설하기</button>
     </form>
    
 </div>

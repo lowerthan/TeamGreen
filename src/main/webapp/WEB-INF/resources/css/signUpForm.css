@@ -76,7 +76,7 @@ body {
   background: none;
 }
 
-.univname, label {
+.univname, label, .sign_up_intro {
   width: 100%;
   border:none;
   outline:none;

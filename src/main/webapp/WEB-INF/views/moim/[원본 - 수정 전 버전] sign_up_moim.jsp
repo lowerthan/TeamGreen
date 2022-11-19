@@ -4,11 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-<link rel="stylesheet" href="/css/signUpForm.css" />
 
-<title>모임 가입</title>
+<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"> </script>
 <script>
 /*
@@ -53,30 +50,24 @@ $(function() {
 </head>
 <body>
 	<div id=sign_up>
-	<form action="/sign_moim_user" class="joinForm" method="POST" id="sign_moim_user">
-		<h2>우리 모임 가입을 환영합니다 :)</h2>
+	<form action="/sign_moim_user" method="GET" id="sign_moim_user">
 		<table>
+			<ul>
 			<input type="hidden" name="user_id" value="${user_info.user_id}" />
 			<input type="hidden" name="moim_idx" value="${moim_info.moim_idx}" />
 			
-			<div class="textForm">
-				유저이름 : ${user_info.user_name }
-			</div>
-			<div class="textForm">
-				유저의 대학교명 : ${user_info.univname }
-			</div>
-			<div class="textForm">
-				유저관심사 : ${user_info.user_cate }
-			</div>
-			<div class="textForm">
-				가입하려는 동아리 이름 : ${moim_info.moim_name }
-			</div>
-			<div class="textForm">
-		  		가입인삿말 : <input name="sign_up_intro" class="sign_up_info" type="text"  >
-			</div>
+			<li> 유저이름 : ${user_info.user_name } </li><br>
+			<li> 유저의 대학교명 : ${user_info.univname } </li><br>
+			<li> 유저관심사 : ${user_info.user_cate } </li><br>
+			
+			<li> 가입할려는 동아리 이름 : ${moim_info.moim_name } </li><br>
+			
+			<li> 가입인삿말
+			<input type="text" name="sign_up_intro" />
+			</li>
+			</ul>		
 		</table>
-			<button type="submit" class="btn1" for="sign_moim_user">모임 가입하기</button>
-			<button type="submit" class="btn2" >내용 지우기</button>
+			<button type="submit" for="sign_moim_user">가입하기</button>
 		</form>
 	</div>
 </body>

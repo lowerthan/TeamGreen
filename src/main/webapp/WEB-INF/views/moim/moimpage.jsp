@@ -85,8 +85,8 @@ $(document).ready(function(){
                         <img class="card-img-top" src="/img/${moimVo.moim_name}_thumbnail.jpg" width="400" height="200" border="3" alt="사진이 안나오네요.." /></a>
                         <div class="card-body">
                             <div class="small text-muted">January 1, 2022 이런식으로 날짜 가능</div>
-                            <h2 class="card-title">블로그 형식 제목다는 곳</h2>
-                            <p class="card-text">블로그 형식 내용적는 곳, 아 벌써 금요일 실화?</p>
+                            <h2 class="card-title">저희 모임에 오신것을 환영합니다</h2>
+                            <p class="card-text">Nice to meet you</p>
                             <p class="btn btn-primary" id="show">가입</p>
                         </div>
                     </div>

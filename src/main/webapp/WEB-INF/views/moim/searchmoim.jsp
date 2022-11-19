@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="/css/home.css" rel="stylesheet" />
 <title>Insert title here</title>
 <style>
 .search {
@@ -71,6 +73,10 @@ $(function() {
 </script>
 </head>
 <body>
+<!-- 내비게이션 바 불러오기 -->
+<%@include file="/WEB-INF/include/navi.jsp" %>
+<br><br>
+
 <div id="searchmain">
 	<form action="/search_moim_name" method="GET" id="search_moim_name">
 	<table>
