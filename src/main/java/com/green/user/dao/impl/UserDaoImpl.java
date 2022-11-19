@@ -57,6 +57,12 @@ public class UserDaoImpl implements UserDao {
 		sqlSession.insert("User.input_hi_board", map2);
 		
 	}
+	
+	@Override
+	public int find_moim_idx(String moim_name) {
+		int moim_idx = sqlSession.selectOne("User.find_moim_idx", moim_name); 
+		return moim_idx;
+	}
 
 	
 	
@@ -88,6 +94,7 @@ public class UserDaoImpl implements UserDao {
 		return cnt;
 	}
 
+	
 
 
 

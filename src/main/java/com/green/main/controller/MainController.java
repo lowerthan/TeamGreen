@@ -94,10 +94,23 @@ public class MainController {
 
 	
 	@RequestMapping("/searchmoim")
-	public ModelAndView SearchMoim(String user_id) {
+	public ModelAndView SearchMoim(String search_word) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("search_word",search_word);
 		mv.setViewName("moim/searchmoim");
 		return mv;
+	}
+	
+	@RequestMapping("/find_moim_idx")
+	@ResponseBody
+	public int find_moim_idx(String moim_name) {
+		
+		int moim_idx = userService.find_moim_idx(moim_name);
+		//System.out.println("moim_idx = " + moim_idx);
+		
+		
+		
+		return moim_idx;
 	}
 
 

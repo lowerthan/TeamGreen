@@ -22,6 +22,7 @@ public interface UserService {
 	
 	void input_hi_board(Map<String, Object> map2);
 	
+	int find_moim_idx(String moim_name);
 	
 	// 현태행님 담당한 부분
 	UserVo getUser(String user_id);
@@ -31,6 +32,7 @@ public interface UserService {
 	void inputMoimUser(Map<String, Object> map);
 
 	int user_id_check(String user_id);
+
 
 
 
