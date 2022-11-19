@@ -2,6 +2,9 @@ package com.green.moim.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,12 +69,26 @@ public class MoimController {
 	
 	@RequestMapping("/search_moim_name")
 	@ResponseBody
-	public ModelAndView Search_Moim_Name(String search_moim_name ) {
+	public ModelAndView Search_Moim_Name(String search_moim_name, 
+			HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		UserVo userVo = (UserVo) session.getAttribute("login");
+		String user_univname = userVo.getUnivname();
+		System.out.println("session!!!"+session.getAttribute("login"));
+		System.out.println(user_univname+"%%%%%"+search_moim_name);
+		map.put("user_univname", user_univname);
+		map.put("search_moim_name", search_moim_name);
+		System.out.println(map);
 		ModelAndView mv = new ModelAndView();
 		MappingJackson2JsonView jv = new MappingJackson2JsonView();
-		List<MoimVo> moimVoList = moimService.search_moim_name(search_moim_name);
+		
+		
+		//List<MoimVo> moimVoList = moimService.search_moim_name(search_moim_name);
+		List<MoimVo> cateMoimList = moimService.cateMoimList(map);
 		mv.setView(jv);
-		mv.addObject("moimVo" , moimVoList);
+		
+		//mv.addObject("moimVo" , moimVoList);
+		mv.addObject("moimVo" , cateMoimList);
 		
 		return mv;
 	}

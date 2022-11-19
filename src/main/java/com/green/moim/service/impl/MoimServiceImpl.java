@@ -1,6 +1,7 @@
 package com.green.moim.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +54,13 @@ public class MoimServiceImpl implements MoimService {
 		List<MoimVo> moimList = moimDao.getRecommend(userVo);
 		return moimList;
 	}
-
+	
+	@Override
+	public List<MoimVo> cateMoimList(Map<String, Object> map) {
+		List<MoimVo> cateMoimList = moimDao.cateMoimList(map);
+		System.out.println("서비스카테모임리스트:"+cateMoimList);
+		return cateMoimList;
+	}
 
 
 

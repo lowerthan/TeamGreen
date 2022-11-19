@@ -56,8 +56,8 @@ $(function() {
 					// console.log("moim_intro : " + obj.moim_intro);
 					//$("<li></li><br>").html(index).appendTo(tr);
 					$("<li></li><br>").html(obj.moim_name).appendTo(tr);
-					$("<li></li><br>").html(obj.moim_cate).appendTo(tr);
-					$("<li></li><br>").html(obj.moim_intro).appendTo(tr);
+					//$("<li></li><br>").html(obj.moim_cate).appendTo(tr);
+					//$("<li></li><br>").html(obj.moim_intro).appendTo(tr);
 					
 					
 					
@@ -78,7 +78,7 @@ $(function() {
 <br><br>
 
 <div id="searchmain">
-	<form action="/search_moim_name" method="GET" id="search_moim_name">
+	<form action="/Moim/search_moim_name" method="GET" id="search_moim_name">
 	<table>
 		<div class="search">
   			<input type="text" id="search_moim" placeholder="검색어 입력">
