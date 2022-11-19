@@ -46,7 +46,7 @@
 	    0,
 	    0,
 	    ( SELECT NVL(MAX(BOARD_IDX),0)+1 FROM BOARD ),
-	     1, 											<!--  #{moim_idx}하면 부적절한 식별자 뜸 -->
+	   #{moim_idx},
 	   #{board_cont}
 	)    
     </insert>
@@ -124,34 +124,40 @@
    	                  WHERE  B.BOARD_IDX = F.BOARD_IDX 
    	              ) FILESCOUNT,
    	              TO_CHAR(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS' )  BOARD_REGDATE,
-   	              BNUM, LVL, STEP, NREF
+   	              BNUM, LVL, STEP, NREF,
+   	              MOIM_IDX
    	   FROM       BOARD   B
    	  
-       WHERE  
-         MENU_IDX = #{menu_idx}
+       WHERE MENU_IDX = #{menu_idx}
+       AND MOIM_IDX = #{moim_idx}
    	     ORDER BY   BOARD_REGDATE DESC
    
    </select>
-   
+
+
     <!-- 목록 조회(paging) -->
     <select  id="PdsPagingList"
    	        parameterType="hashmap"
             resultType="com.green.pds.vo.PdsPagingVo" >
    	  SELECT  *
    	   FROM 
-   	  ( SELECT    ROW_NUMBER() OVER( ORDER BY   NREF  DESC, STEP ASC) RNUM,
-   	              BOARD_IDX,         MENU_IDX,   	              
-   	              BOARD_TITLE,   	              
-   	              USER_ID,      READCOUNT,
+   	  ( SELECT  ROW_NUMBER() OVER( ORDER BY   NREF  DESC, STEP ASC) RNUM,
+   	              BOARD_IDX,
+   	              MENU_IDX,
+   	              BOARD_TITLE,
+   	              USER_ID,
+   	              READCOUNT,
    	              (  SELECT  COUNT(FILE_NUM)
-   	                  FROM   FILES  F
+                   FROM   FILES  F
    	                  WHERE  B.BOARD_IDX = F.BOARD_IDX 
    	              ) FILESCOUNT,
    	              TO_CHAR(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS' )  BOARD_REGDATE,
-   	              BNUM, LVL, STEP, NREF
+   	              BNUM, LVL, STEP, NREF,
+   	              MOIM_IDX
    	   FROM       BOARD   B
-   	   WHERE      1=1
-        AND MENU_IDX = #{menu_idx}         
+   	   WHERE 1=1
+   	    AND MENU_IDX = #{menu_idx}
+   	    AND MOIM_IDX = #{moim_idx}
    	  ) T   	   
    	   WHERE 
    	      RNUM BETWEEN #{startnum} AND #{endnum}
@@ -166,7 +172,8 @@
           BOARD_IDX, MENU_IDX,
           BOARD_TITLE, BOARD_CONT, USER_ID, READCOUNT, 
           TO_CHAR(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS') BOARD_REGDATE,
-          BNUM, LVL, STEP, NREF
+          BNUM, LVL, STEP, NREF,
+          MOIM_IDX
       FROM   
          BOARD
       WHERE 
@@ -181,7 +188,7 @@
          BOARD
       WHERE 
          MENU_IDX = #{menu_idx}
-   
+   AND MOIM_IDX = #{moim_idx}
    </select>
    
    <select id="PdsFileList"
@@ -245,9 +252,9 @@
      BOARD_CONT
 	 )VALUES (
 	#{board_idx},
-    'sky',
+    #{user_id},
 	3,
-	 1,
+	 #{moim_idx},
 	   #{board_title},
 	 #{board_cont}
   )
@@ -271,26 +278,29 @@
 	</insert>
 
 <!-- 조회수 증가 -->
-<update id="ReadCountUpdate">
+	<update id="ReadCountUpdate">
        UPDATE  BOARD
         SET    READCOUNT = READCOUNT + 1     
         WHERE  BOARD_IDX  = #{board_idx}        
     </update>
-    
-    <select id="getCommentsList"
+
+
+ 	<select id="getCommentsList"
 		resultType="com.green.pds.vo.CommentsVo">
 		SELECT	USER_ID, REGDATE, CONT, BOARD_IDX
 		FROM	COMMENTS
 		WHERE	BOARD_IDX = #{board_idx}
+		
 	</select>
+	
 	
 	<insert id="inputComments" 
 		parameterType="HashMap">
 		INSERT INTO COMMENTS (USER_ID, CONT, BOARD_IDX)
     	VALUES (#{user_id}, #{comment}, #{board_idx})
+    	
+	</insert>
 		
-		
-		</insert>
 		
 	<select id="getHiBoardList"
 		resultType="com.green.pds.vo.PdsVo">
@@ -299,8 +309,9 @@
 		WHERE	MOIM_IDX = #{moim_idx}
 		AND		MENU_IDX = 4
 		
-		</select>
-    
+	</select>
+
+
 
 </mapper>
 

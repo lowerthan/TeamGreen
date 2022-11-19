@@ -101,9 +101,9 @@ $(document).ready(function(){
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/Pds/List?menu_idx=1&nowpage=1&pagecount=10&pagegrpnum=1">자유 게시판</a></li>
-                                        <li><a href="/Pds/List?menu_idx=2&nowpage=1&pagecount=10&pagegrpnum=1" >질문 게시판</a></li>
-                                        <li><a href="/Pds/${ moimVo.moim_idx }/Album" >사진첩</a></li>
+                                        <li><a href="/Pds/List?menu_idx=1&nowpage=1&pagecount=10&pagegrpnum=1&moim_idx=${moimVo.moim_idx}">자유 게시판</a></li>
+                                        <li><a href="/Pds/List?menu_idx=2&nowpage=1&pagecount=10&pagegrpnum=1&moim_idx=${moimVo.moim_idx}" >질문 게시판</a></li>
+                                        <li><a href="/Pds/Album?moim_idx=${moimVo.moim_idx}" >사진첩</a></li>
                                         <li><a href="/Pds/hi?moim_idx=${moimVo.moim_idx}" >가입인사 게시판</a></li>
                                     </ul>
                                 </div>

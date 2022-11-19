@@ -45,16 +45,15 @@ public class PdsDaoImpl implements PdsDao {
 		
 		List<PdsVo>  pdsList =  sqlSession.selectList("Pds.PdsList", map);
 		
-		System.out.println("김인영" + pdsList);
+System.out.println("김인영의pdsList:" + pdsList);
 		return       pdsList;
 		
 	}
 
 	@Override
-	public PdsVo getPds(HashMap<String, Object> map) {
 		// 조회수 증가
+	public PdsVo getPds(HashMap<String, Object> map) {
 		sqlSession.update("Pds.ReadCountUpdate", map );
-		
 		PdsVo  pdsVo  =  sqlSession.selectOne("Pds.GetPds", map);
 		map.put("totCnt", 12345);
 		return pdsVo;
@@ -181,6 +180,9 @@ public class PdsDaoImpl implements PdsDao {
 		List<PdsVo> pdsVo = sqlSession.selectList("Pds.getHiBoardList", moim_idx);
 		return pdsVo;
 	}
+	
+	
+	
 }
 
 

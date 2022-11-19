@@ -44,5 +44,4 @@ public interface PdsService {
 	void InputComments(Map<String, Object> map);
 
 	List<PdsVo> getHiBoardList(String moim_idx);
-	
 }

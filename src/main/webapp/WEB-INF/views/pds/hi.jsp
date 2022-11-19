@@ -7,26 +7,30 @@
 <head>
 <meta charset="UTF-8">
 <title>가입인사 게시판</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 <link rel="stylesheet" href="/css/home.css" />
 <link rel="stylesheet" href="/css/list.css" />
 
-
+<!-- 
 <style>
-h2 { text-align:center; }
+  #PdsList  td:nth-of-type(1) { width:70px;  text-align: center; }   
+  #PdsList  td:nth-of-type(2) { width:300px; text-align: left; }  
+  #PdsList  td:nth-of-type(3) { width:80px; text-align: center; }  
+  #PdsList  td:nth-of-type(4) { width:80px; text-align: center; }  
+  #PdsList  td:nth-of-type(5) { width:100px; text-align: center; }  
+  #PdsList  td:nth-of-type(6) { width:100px; text-align: center; }  
 </style>
-
+ -->
 </head>
 <body>
 	<!-- 내비게이션 바 불러오기 -->
     <%@include file="/WEB-INF/include/navi.jsp" %>
 
 	<section class="notice">
-		<div id="board-list">
-		    <div class="container">
-	            <h2><b>가입인사 게시판</b></h2>
-		        <table class="board-table">
+	<div id="board-list">
+	    <div class="container">
+            <h2><b>가입인사 게시판</b></h2><br>
+	        <table class="board-table">
 		    
 		    <tr>
          <td class="right" colspan="6">
@@ -50,16 +54,15 @@ h2 { text-align:center; }
        
      </table>
    
+     
      <!-- 페이징 리스트 -->
      <%@include file="/WEB-INF/include/paging.jsp" %>
      
-     
-     <!-- 
   	<button type="button" style="float: right" onclick="location.href='/';">　홈으로　</button>
     <button type="button" style="float: right" onclick="location.href='javascript:history.back()';">　이전으로　</button>
-  	 -->
+  	
   
-  	<!-- 
+  
     <button onclick="myFunction2()">　가입　</button>
 	<script>
 	function myFunction2() {
@@ -84,7 +87,6 @@ h2 { text-align:center; }
 	  } 
 	}
 	</script>
-	 -->
 	</div>
 	
   </div>

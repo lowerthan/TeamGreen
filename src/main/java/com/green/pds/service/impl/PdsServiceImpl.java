@@ -43,7 +43,7 @@ public class PdsServiceImpl implements PdsService {
 
 		List<PdsVo>  pdsList  =  pdsDao.getPdsList( map );		
 		
-		System.out.println("PdsServiceImpl :" + pdsList);
+System.out.println("PdsServiceImpl :" + pdsList);
 		
 		return       pdsList;
 		
@@ -55,12 +55,7 @@ public class PdsServiceImpl implements PdsService {
 			
 			List<PdsPagingVo> pdsPagingList = pdsDao.getPdsPagingList( map );
 			
-			
-			//                                     pagetotalcount
-			// [이전] 1 2 3 4 5 6 7 8 9 10 [다음]     10
-			// [이전] 1 2 3 4 5            [다음]      5		
-			//  화면에 보야질 페이지 번호의 갯수
-			int pagetotalcount = 2;  
+			int pagetotalcount = 10;  
 			
 			// 한 페이지에 보여줄 라인수 :조회된 결과 라인수
 			int pagecount = Integer.parseInt( 
@@ -70,10 +65,6 @@ public class PdsServiceImpl implements PdsService {
 		    int nowpage    = Integer.parseInt( 
 		    	String.valueOf( map.get("nowpage") ) );
 			
-		    // pagegrpnum : 
-		       //  1     [이전]    1  2  3  4  5  6  7  8  9 10 [다음]
-		       //  2     [이전]   11 12 13 14 15 16 17 18 19 20 [다음]
-		       //  3     [이전]   21 22 23 24 25 26 		
 		    int pagegrpnum = Integer.parseInt(
 		    		String.valueOf( map.get("pagegrpnum") ) );
 			
@@ -89,6 +80,7 @@ public class PdsServiceImpl implements PdsService {
 			PdsPagingVo        vo  = bp.getPdsPagingInfo();
 			
 			vo.setMenu_idx(Integer.parseInt( String.valueOf(map.get("menu_idx"))));
+			vo.setMoim_idx(Integer.parseInt( String.valueOf(map.get("moim_idx"))));
 			
 			map.put("pagePdsVo", vo);
 			
@@ -127,33 +119,6 @@ public class PdsServiceImpl implements PdsService {
 	      // 파일 정상 삭제시 카운트 증가
 	      int success_cnt = 0;
 	      
-	      /*
-	      // map:{board_idx=21} 해당 보드 인덱스의 파일 이름 가져오기
-	      List<FilesVo>  filesList  =  pdsDao.getFilesList( map );
-
-	      // 파일명 가지고 오고, 삭제까지 진행되는 반복문 
-	      for (FilesVo filesVo : filesList) {
-	         
-	         String  delFile =  filesVo.getSfilename();
-	         File  file  =  new File("c:\\upload\\" + delFile);
-	         
-	         if( file.exists() ) {
-	            if(file.delete() == true) { // 파일 삭제가 정상이면
-	               success_cnt += 1; // 성공여부 카운트 1 증가
-	            }
-	         }
-	         
-	      }
-	      
-	      // 파일삭제 정상일 때 디비 데이터 삭제 진행
-	      if (success_cnt > 0) {
-	         pdsDao.deleteFileData(map);
-	         pdsDao.deleteBoardData(map);
-	      }
-
-	      */
-	      
-	      //pdsDao.deleteFileData(map);
 	      pdsDao.deleteBoardData(map);
 	   }
 	
@@ -219,6 +184,7 @@ public class PdsServiceImpl implements PdsService {
 		pdsDao.setWrite( map );
 
 	}
+	
 	@Override
 	public List<CommentsVo> getCommentsList(int board_idx) {
 		List<CommentsVo> CommentsList = pdsDao.getCommentsList(board_idx);
@@ -236,6 +202,7 @@ public class PdsServiceImpl implements PdsService {
 		List<PdsVo> pdsVo = pdsDao.getHiBoardList(moim_idx);
 		return pdsVo;
 	}
+	
 }
 
 
