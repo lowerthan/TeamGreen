@@ -1,6 +1,7 @@
 package com.green.moim.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,13 @@ public class MoimDaoImpl implements MoimDao {
 		List<MoimVo> moimList = sqlSession.selectList("Moim.getRecommend", userVo);
 		System.out.println("다오에서감 moimList:" + moimList);
 		return moimList;
+	}
+	
+	@Override
+	public List<MoimVo> cateMoimList(Map<String, Object> map) {
+		List<MoimVo> cateMoimList = sqlSession.selectList("Moim.cateMoimList",map);
+		System.out.println("다오카테모임리스트: "+cateMoimList);
+		return cateMoimList;
 	}
 }
 
