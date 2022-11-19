@@ -50,6 +50,13 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public int find_moim_idx(String moim_name) {
+		
+		int moim_idx = userDao.find_moim_idx(moim_name); 
+		
+		return moim_idx;
+	}
 	
 	
 	
@@ -80,6 +87,7 @@ public class UserServiceImpl implements UserService {
 		int cnt = userDao.user_id_check(user_id);
 		return cnt;
 	}
+
 
 
 
