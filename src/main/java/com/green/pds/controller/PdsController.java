@@ -41,12 +41,12 @@ public class PdsController {
 	@Autowired
 	private  PdsService    pdsService;
 	
-
+	/*
 	@RequestMapping("/album")
 	public String   list() {
 		return  "pds/album";
 	}
-
+	*/
 //   @RequestMapping("/board")
 //   public String board(HashMap<String, Object> map, Model model) {
 //	   

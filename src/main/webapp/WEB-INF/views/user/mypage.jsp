@@ -30,10 +30,12 @@
   }
         
   function chk(){ // 수정버튼 클릭 
-	  var pw = document.myinfo.user_pw.value;
+
+	  var pw = document.getElementsByName("user_pw")[0].value;
+
 	  if(pw == ""){
 		  alert("비밀번호를 입력하세요.")
-		  document.myinfo.user_pw.focus();
+		  document.getElementsByName("user_pw")[0].focus();
           return false;
 	  }
 	  alert('수정완료');
@@ -42,12 +44,7 @@
 </script>
 </head>
 <body>
-   <!-- 
-   <a href="/mainpage">Home</a>
-   <a href="/logout">로그아웃</a>
-    
-  <p id="show"></p>
-  -->
+
   <div class="container px-4 px-lg-5 ">
 	<form id="myinfo" action="/Update" method="POST" class="joinForm" >
 		<h2><b>사용자 정보</b></h2>
@@ -129,7 +126,7 @@
 		</div>
 	 	<div id="buttons">
 	        <input type="submit" class="btn1" value="수정하기" onclick="return chk()" >
-	        <input type="reset" class="btn2" value="취소">
+	        <input type="reset" class="btn2" value="원래대로">
 		</div>
    </form>
    </div>

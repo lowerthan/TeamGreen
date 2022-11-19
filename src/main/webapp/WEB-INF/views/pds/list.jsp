@@ -30,6 +30,7 @@
 	    <div class="container">
             <h2><b>게시판</b></h2><br>
 	        <table class="board-table">
+	        <button type="button" class="btn btn-secondary" style="float: right" onclick="location.href='/Pds/WriteForm?menu_idx=${ menu_idx }&bnum=0&lvl=0&step=0&nref=0&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}'">　글쓰기　</button>
 		       <!-- 새글 쓰기 -->
 		       <thead>
 		       <tr>
@@ -84,7 +85,7 @@
        </c:forEach>
     
      </table>
-	<button type="button" style="float: right" onclick="location.href='/Pds/WriteForm?menu_idx=${ menu_idx }&bnum=0&lvl=0&step=0&nref=0&nowpage=${map.nowpage}&pagecount=${map.pagecount}&pagegrpnum=${map.pagegrpnum}'">　글쓰기　</button>
+	
      
    </div>
    </div>
