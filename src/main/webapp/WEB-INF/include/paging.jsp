@@ -5,10 +5,9 @@
 <%-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
 
 <div>
-
-   <table width="500" height="25" align="center">
+   <table>
     <tr>
-    <td width="500" height="25" align="center">                                               
+    <td width="1600" height="25" align="center" >                                               
       <c:set var="showprev"        value="${pagePdsVo.isshowpageprev}" />
       <c:set var="shownext"        value="${pagePdsVo.isshowpagenext}" />
       

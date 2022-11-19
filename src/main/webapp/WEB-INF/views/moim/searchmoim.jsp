@@ -7,9 +7,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <link href="/css/home.css" rel="stylesheet" />
-<title>Insert title here</title>
+<title>모임 검색</title>
 <style>
+
+<%-- margin: auto; 하니까 검색창 가운데로 가네 ㅋㅋ --%>
 .search {
+	margin : auto;
   position: relative;
   width: 300px;
 }
@@ -106,17 +109,32 @@ $(function() {
 <body>
 <!-- 내비게이션 바 불러오기 -->
 <%@include file="/WEB-INF/include/navi.jsp" %>
+
+<!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h2 class="display-4 fw-bolder">소모임 + 에브리타임</h2>
+                    <br><p class="lead fw-normal text-white-50 mb-0">우리 사이트에서 <br>당신만의 동아리를 만들어가세요</p>
+                </div>
+            </div>
+        </header>
 <br><br>
 
 <div id="searchmain">
 	<form action="/Moim/search_moim_name" method="GET" id="search_moim_name">
 	<table>
 		<div class="search">
-  			<input type="text" id="search_moim" placeholder="검색어 입력" value="${search_word}" name="search_moim">
+
+  			<input type="text" id="search_moim" placeholder="모임을 검색하세요" value="${search_word}" name="search_moim">
+
+ 
+
   			<img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+			<ul>
+			<br>
+			<span id="moim_list"></span></ul><br>
 		</div>
-		<ul><span id="moim_list"></span></ul><br>
-		
 		
 		
 	</table>
