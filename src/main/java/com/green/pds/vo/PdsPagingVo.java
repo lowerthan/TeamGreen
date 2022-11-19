@@ -26,6 +26,7 @@ public class PdsPagingVo {
 	}
 
 	private int menu_idx;
+	private int moim_idx;
 
 	private String file_num;
 	private String filename;
@@ -142,6 +143,14 @@ public class PdsPagingVo {
 
 	public void setMenu_idx(int menu_idx) {
 		this.menu_idx = menu_idx;
+	}
+	
+	public int getMoim_idx() {
+		return moim_idx;
+	}
+
+	public void setMoim_idx(int moim_idx) {
+		this.moim_idx = moim_idx;
 	}
 
 	public String getFile_num() {

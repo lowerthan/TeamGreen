@@ -12,6 +12,12 @@
 </head>
 <body>
 
+<button type="button"  style="float: right" onclick="location.href='javascript:history.back()';">　이전으로　</button>
+<button type="button"  style="float: right" onclick="location.href='/';">　홈으로　</button>
+<button type="button"  style="float: right" onclick="location.href='/Mypage?user_id=${ sessionScope.login.user_id }';">　마이페이지　</button>
+
+
+
     <!--사진 업로드페이지 중앙배치-->
         <main class="uploadContainer">
            <!--사진업로드 박스-->
@@ -29,7 +35,7 @@
                 <!--사진업로드 Form-->
                 <form class="upload-form" method="POST" enctype="multipart/form-data" action="/Pds/Album/upload">
                     <input type="hidden" name="moim_idx" value="${moim_idx}"/>
-                      <input type="hidden" name="user_id" value="sky"/>  <%--세션의 담긴 유저아이디 로 바꿔주기 --%>
+                      <input type="hidden" name="user_id" value="${ sessionScope.login.user_id }"/>  <%--세션의 담긴 유저아이디 로 바꿔주기 --%>
                        <input type="hidden" name="menu_idx" value="3"/>    <%-- menu_idx = 1 ( 자유게시판 ) menu_idx = 2 ( Q & A) menu_idx = 3 ( 사진첩) --%>
                     <input type="file" name="file"  accept="image/*" id="input_img" />
                     

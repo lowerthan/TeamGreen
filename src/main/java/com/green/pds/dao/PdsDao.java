@@ -32,6 +32,7 @@ public interface PdsDao {
 	void pdsInsert(PdsVo pdsVo);
 
 	int BoardImageUpload(PdsVo pdsVo);
+	
 	int FileImageUpload (FilesVo filesVo);
 
 	int selectBoardIdx();
@@ -45,4 +46,5 @@ public interface PdsDao {
 	void InputComments(Map<String, Object> map);
 
 	List<PdsVo> getHiBoardList(String moim_idx);
+	
 }
