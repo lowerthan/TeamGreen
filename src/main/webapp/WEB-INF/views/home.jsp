@@ -44,8 +44,8 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h2 class="display-4 fw-bolder">GreenCom Team 4 <br>Dw + Ss + Ht + Js + Iy</h2>
-                    <p class="lead fw-normal text-white-50 mb-0">당신만의 동아리를 만들어가세요</p>
+                    <h2 class="display-4 fw-bolder">소모임 + 에브리타임</h2>
+                    <br><p class="lead fw-normal text-white-50 mb-0">우리 사이트에서 <br>당신만의 동아리를 만들어가세요</p>
                 </div>
             </div>
         </header>
@@ -212,7 +212,7 @@
             </div>
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-4 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Made by GreenComputer Team 4 - Dw, Ss, Ht, Js, Iy 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->

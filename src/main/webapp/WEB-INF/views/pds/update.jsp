@@ -7,9 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<title>내용 수정</title>
+
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-<link rel="stylesheet" href="/css/common.css" />
+<link rel="stylesheet" href="/css/home.css" />
 <style>
   #PdsView td:nth-of-type(1) {  width : 150px; text-align: center;   }
   #PdsView td:nth-of-type(2) {  width : 400px; text-align: center;   }
@@ -24,6 +27,42 @@
   
   input[type=text]  { width:100%; }
   textarea          { width:100%; height:400px; }
+  
+  
+  <!-- common.css 내용 그대로 가져옴 -->
+   * { box-sizing:border-box; 
+       padding:0; margin:0;
+   }
+   a { text-decoration:none; color:black;}
+   a:hover {text-decoration:underline; color:black;}
+   
+   table, th, td {  
+      border : 1px solid  #c0c0c0;
+      border-collapse : collapse;
+   }
+   th, td {  padding:10px; }
+   #main { width:80%; margin:0 auto; }
+   table { width:100%;}
+   
+   #menu  { margin-top : 50px;}   
+   
+   #menu td { text-align :center; } 
+   
+   .left   { text-align:left !important;}
+   .center { text-align:center !important;  }
+   .right  { text-align:right !important;  }
+   
+   h2   { margin:20px; text-align:center;}
+  
+   #menu  td   {  padding:0;  } 
+   #menu  td  a {
+      display : inline-block;
+      width   : 100%;
+      padding : 10px;
+   }
+   #menu  td  a:hover { background: yellow;  }  
+   
+   input { height:32px; }
   
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -72,6 +111,8 @@
 </script>
 </head>
 <body>
+<!-- 내비게이션 바 불러오기 -->
+<%@include file="/WEB-INF/include/navi.jsp" %>
   <div id="main">
   
     <form  action="/Pds/Update" method="POST">
@@ -83,7 +124,9 @@
     <input type="hidden" name="pagegrpnum"   value="${ map.pagegrpnum }" />      --%>
     <!-- 자료실 pdsList -->   
     <table id="PdsView">
-      <caption><h2> 수정하기 </h2></caption>
+      <br>
+      <h2><b>수정하기</b></h2>
+      <br>
       <tr>
          <td>작성자</td>
          <td>${ pdsVo.user_id }</td>
@@ -111,8 +154,8 @@
        
        <tr>
          <td  colspan="4">
-           <input type="submit" value="수정" />
-           <input type="button" id="btnList" value="목록" onclick="location.href='http://localhost:8080/Pds/board';" />
+           <input type="submit" class="btn btn-primary" value="수정" />
+           <input type="button" class="btn btn-dark" id="btnList" value="이전" onclick="location.href='javascript:history.back()';" />
          </td>
        </tr> 
        

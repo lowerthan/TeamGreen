@@ -18,7 +18,7 @@ display: none;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 <link rel="stylesheet" href="/css/signUpForm.css" />
-<title>회원가입 화면</title>
+<title>회원가입</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -82,13 +82,12 @@ function checkId(){
 
 </head>
 <body>
-	
 	<!-- USER_ID, USER_PW, USER_NAME, USER_CATE, UNIVNAME 
 	
 	onsubmit="DoJoinForm__submit(this); return false;" 밑에 joinForm 옆에 있던거-->
 	<form action="/signUpProcess" method="POST" class="joinForm" name="joinForm">
                                                                                                
-	<h2>소모임 + 에브리타임을 섞은 <br> 우리 사이트 회원가입을 환영합니다 <br> '\'이건 연습용 제목'\'</h2>
+	<h2>소모임 + 에브리타임을 섞은 <br> 우리 사이트 회원가입을 환영합니다</h2>
 		<div class="textForm">
 		  <input name="user_id" type="text" class="user_id" id="user_id" name="user_id" placeholder="아이디" oninput = "checkId()">
 		</div>
@@ -115,7 +114,8 @@ function checkId(){
 		       <input type="text" id="univname" name="univname" readonly>
                <input type="button" value="학교검색" onclick="showPopup();">
 		</div>
-		<input type="submit" class="btn" value="가입하기" onclick="return check_onclick()" />
+		<input type="submit" class="btn1" value="가입하기" onclick="return check_onclick()" />
+		<input type="reset" class="btn2" value="모두 지우기" />
     </form>
 	
 </body>
