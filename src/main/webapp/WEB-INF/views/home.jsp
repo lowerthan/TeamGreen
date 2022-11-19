@@ -66,7 +66,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=요리/맛집">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=요리/맛집">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=사교/인맥">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=사교/인맥">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=여행/캠핑">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=여행/캠핑">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=스포츠/운동">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=스포츠/운동">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=문화/공연">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=문화/공연">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=게임/오락">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=게임/오락">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=댄스/음악">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=댄스/음악">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?=반려동물">해당 카테고리로</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Main/searchmoim?search_word=반려동물">해당 카테고리로</a></div>
                             </div>
                         </div>
                     </div>

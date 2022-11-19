@@ -52,6 +52,14 @@
 			    #{sign_up_intro}) 
    </insert>
    
+   <select id="find_moim_idx"
+   		resultType="int">
+   		SELECT MOIM_IDX
+		FROM    MOIM
+		WHERE   MOIM_NAME =	#{moim_name}	
+   
+   </select>
+   
    <delete id="delete_hi"
    		parameterType="HashMap">
    		DELETE FROM   BOARD

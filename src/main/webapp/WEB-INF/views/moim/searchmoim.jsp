@@ -34,6 +34,8 @@ img {
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"> </script>
 <script>
 $(function() {
+	
+	
 	$('#search_moim').on('keyup', function() {
 		let search_moim_name = $('#search_moim').val(); // 검색어
 			
@@ -44,10 +46,12 @@ $(function() {
 			dataType : "json",
 			}).done(function(e){
 				$("#test").remove();
-				console.log(e['moimVo']);
+				//console.log("값은"+e['moimVo']);
 				let arr = e['moimVo'];
 				console.log(arr);
+				
 				let tr = $("<ul id=test></ul>");
+				let td = $("<table></table>");
 				
 				$.each(arr, function(index, obj) {
 					// console.log(index); // 번호
@@ -55,7 +59,10 @@ $(function() {
 					// console.log("moim_cate : " + obj.moim_cate);
 					// console.log("moim_intro : " + obj.moim_intro);
 					//$("<li></li><br>").html(index).appendTo(tr);
-					$("<li></li><br>").html(obj.moim_name).appendTo(tr);
+					//$("<table id=obj.moim_name>").appendTo(tr);
+					td.appendTo(tr);
+					$("<li name=moim_name></li><br>").html(obj.moim_name).appendTo(td);
+					//$("</table>").appendTo(tr);
 					//$("<li></li><br>").html(obj.moim_cate).appendTo(tr);
 					//$("<li></li><br>").html(obj.moim_intro).appendTo(tr);
 					
@@ -64,10 +71,34 @@ $(function() {
 				});
 				
 				$("#moim_list").append(tr);
+				$('[name=moim_name]').click(function(){
+					
+					var row_data = $(this);
+					
+					console.log("클릭한 Row의 모든 데이터 : "+row_data.text());
+					let moim_name = row_data.text();
+					
+					$.ajax({
+						url : "find_moim_idx",
+						type : "GET",
+						data : {moim_name : moim_name},
+						dataType : 'json',
+						success : function(moim_idx){
+							location.replace('/Moim/moimpage?moim_idx='+moim_idx);
+							
+						},
+						error : function() {
+							alert('서버요청실패');
+						}
+					})
+					
+			    });
 				
 			})
 			
 		})
+		$('#search_moim').keyup();
+		
 	})
 
 </script>
@@ -81,7 +112,7 @@ $(function() {
 	<form action="/Moim/search_moim_name" method="GET" id="search_moim_name">
 	<table>
 		<div class="search">
-  			<input type="text" id="search_moim" placeholder="검색어 입력">
+  			<input type="text" id="search_moim" placeholder="검색어 입력" value="${search_word}" name="search_moim">
   			<img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
 		</div>
 		<ul><span id="moim_list"></span></ul><br>
