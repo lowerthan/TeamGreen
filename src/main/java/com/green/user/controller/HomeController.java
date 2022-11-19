@@ -1,5 +1,6 @@
 package com.green.user.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +53,8 @@ public class HomeController {
 			UserVo userVo = (UserVo) session.getAttribute("login");
 			//System.out.println("로그인세션아이디:" + userVo.getUser_id());
 
-			List<MoimVo> moimList = moimService.getRecommend(userVo);  // home화면의 추천모임리스트 
-			System.out.println("moimList:" + moimList);
+			List<MoimVo> moimList = moimService.getRecommend(userVo);  // home화면의 추천모임리스트
+			Collections.shuffle(moimList);
 			model.addAttribute("moimList", moimList);		// 홈화면의 c:forEach문의 아이템 moimList
 			//System.out.println(moimList);
 			return "home";  								

@@ -5,7 +5,6 @@
   padding: 0px;
   text-decoration: none;
   font-family:sans-serif;
-
 }
 
 body {
@@ -15,11 +14,11 @@ body {
 .joinForm {
   position:absolute;
   width:500px;
-  height:500px;
-  padding: 30px, 20px;
+  height:300px;
+  padding: 50px, 50px;
   background-color:#FFFFFF;
   text-align:center;
-  top:30%;
+  top:25%;
   left:50%;
   transform: translate(-50%,-50%);
   border-radius: 15px;
@@ -88,7 +87,7 @@ body {
 }
 
 
-.btn {
+.btn1 {
   position:relative;
   left:25%;
   transform: translateX(-50%);
@@ -106,6 +105,24 @@ body {
   display:inline;
 }
 
-.btn:hover {
+.btn2 {
+  position:relative;
+  left:25%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:50%;
+  height:40px;
+  background: linear-gradient(125deg,rgb(255, 255, 0),rgb(255, 0, 0),rgb(255, 255, 0));
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+.btn1:hover, .btn2:hover {
   background-position: right;
 }
