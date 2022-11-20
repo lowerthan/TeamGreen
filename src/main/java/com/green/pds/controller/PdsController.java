@@ -268,7 +268,7 @@ System.out.println("pdsVo:" + pdsVo);
 
 // 경로 수정할것!!!
 //        String uploadFolder = "D:\\ws\\spring\\moim_db2\\src\\main\\webapp\\WEB-INF\\resources\\imgup2\\";
-        String uploadFolder = "C:\\ws\\Java\\4TeamGreen\\TeamGreen\\src\\main\\webapp\\WEB-INF\\resources\\imgup\\";
+        String uploadFolder = "C:\\Users\\gaden\\git\\TeamGreen\\src\\main\\webapp\\WEB-INF\\resources\\imgup\\";
 
 
         Path imageFilePath = Paths.get(uploadFolder + imageFileName);
